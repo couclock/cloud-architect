@@ -1,323 +1,352 @@
-# 📘 AWS Certified Solutions Architect – Associate (SAA-C03)
-## Study & Note-Taking Template
+# AWS Certified Solutions Architect – Associate (SAA-C03)
+## Study Notes – Udemy Course
 
-## ✅ Goal
-
-- Start date:
-- Target exam date:
-- Current strengths:
-- Main weaknesses:
-
----
-
-# 📍 SECTION 1 – AWS Fundamentals & IAM
-
-## 🎯 Section objectives
-- [ ] Understand AWS global infrastructure
-- [ ] Master IAM basics
-- [ ] Understand shared responsibility model
-
----
-
-## 🔹 IAM – Identity & Access Management
-
-### 📌 Definition (1–2 lines)
-Service used to manage **users, groups, roles and permissions** in AWS.
-
----
-
-### 🧠 Key concepts
-- User ≠ Role
-- Principle of least privilege
-- MFA (Multi-Factor Authentication)
-- Policies written in JSON
-- Users belong to **groups**, groups get **policies**
-
----
-
-### ⚙ Common use-cases
-- Grant access to AWS services
-- Allow EC2 / Lambda to access S3 (via roles)
-- Secure applications
-
----
-
-### ⚠ Exam traps / Must remember
-- Root account should never be used daily
-- Always enable **MFA**
-- Never share access keys
-- Use roles instead of access keys where possible
-
----
-
-### ✅ Typical exam question
-> What is the best way to protect your AWS root account?
-
-→ Enable MFA + do not use it for regular activities
-
----
-
-### 📌 Section Summary (Exam Focus)
-- IAM controls access
-- Use least privilege & MFA
-- Roles > users for services
-
----
-
-# 📍 SECTION 2 – Networking & VPC
-
-## 🔹 VPC – Virtual Private Cloud
-
-### 📌 Definition
-A **logically isolated virtual network** in AWS.
-
----
-
-### 🔧 Key components
-
-| Component | Description |
+| Field | Value |
 |------|------|
-Subnet (Public/Private) | Network segmentation  
-Internet Gateway | Allows internet access  
-NAT Gateway | Outbound only for private subnets  
-Route Tables | Network traffic rules  
-Security Groups | Instance-level firewall  
-NACL | Subnet-level firewall  
+| Course | AWS Certified Solutions Architect – Associate (SAA-C03) |
+| Source | Udemy |
+| Objective | Pass the AWS SAA-C03 exam |
+| Start Date | __________ |
+| Target Exam Date | __________ |
+| Status | In progress |
 
 ---
 
-### 🧠 Key differences (important!)
+## 📚 Table of Contents
+
+1. [🎯 Goal](#-goal)
+2. [Section 1 – AWS Fundamentals & IAM](#-section-1--aws-fundamentals--iam)
+   - [IAM – Identity & Access Management](#-iam--identity--access-management)
+3. [Section 2 – Networking & VPC](#-section-2--networking--vpc)
+   - [VPC – Virtual Private Cloud](#-vpc--virtual-private-cloud)
+   - [Subnets, IGW, NAT, Route Tables, NACLs, Security Groups](#-subnets-igw-nat-route-tables-nacls-security-groups)
+4. [Section 3 – Compute](#-section-3--compute)
+   - [EC2 – Elastic Compute Cloud](#-ec2--elastic-compute-cloud)
+   - [Auto Scaling & Load Balancers](#-auto-scaling--load-balancers)
+   - [Lambda](#-lambda)
+   - [Containers – ECS / Fargate / EKS](#-containers--ecs--fargate--eks)
+5. [Section 4 – Storage](#-section-4--storage)
+   - [S3 – Simple Storage Service](#-s3--simple-storage-service)
+   - [EBS / EFS / FSx](#-ebs--efs--fsx)
+   - [S3 Lifecycle & Replication](#-s3-lifecycle--replication)
+6. [Section 5 – Databases](#-section-5--databases)
+   - [RDS / Aurora](#-rds--aurora)
+   - [DynamoDB](#-dynamodb)
+   - [ElastiCache](#-elasticache)
+7. [Section 6 – Messaging & Serverless Architectures](#-section-6--messaging--serverless-architectures)
+   - [SQS / SNS / EventBridge](#-sqs--sns--eventbridge)
+   - [API Gateway / Step Functions](#-api-gateway--step-functions)
+8. [Section 7 – Monitoring & Security](#-section-7--monitoring--security)
+   - [CloudWatch / CloudTrail / AWS Config](#-cloudwatch--cloudtrail--aws-config)
+   - [AWS Shield / WAF / KMS](#-aws-shield--waf--kms)
+9. [Section 8 – Cost Optimization](#-section-8--cost-optimization)
+10. [Final Section – Exam Tips & Common Pitfalls](#-final-section--exam-tips--common-pitfalls)
+11. [🗓️ 14-Day Revision Plan](#️-14day-revision-plan)
+
+---
+
+## 🎯 Goal
+
+**Primary Objective:**  
+Pass the AWS Certified Solutions Architect Associate (SAA-C03) exam with confidence.
+
+**Focus Areas:**
+- Well-Architected Framework
+- High availability & scalability
+- Security best practices
+- Cost optimization
+- Real exam scenarios
+
+---
+
+# SECTION 1 — AWS Fundamentals & IAM
+
+## ✅ Video Checklist
+
+- [ ] What is Cloud Computing?
+- [ ] Regions, AZs, Edge Locations
+- [ ] Shared Responsibility Model
+- [ ] IAM Introduction
+- [ ] IAM Users / Groups / Roles / Policies
+- [ ] Hands-on: Create IAM user & policy
+
+---
+
+## 🔐 IAM – Identity & Access Management
+
+### 📌 Key Concepts
+
+- Users: real people / services
+- Groups: collection of users
+- Roles: AWS services take roles
+- Policies: JSON permission documents
+
+### 🧠 Important Notes
+
+- Always use **least privilege principle**
+- Never use root user for daily tasks
+- Use **MFA** everywhere
+- Roles are used instead of access keys on EC2
+
+### 📝 Example policies ideas / exam concepts
+
+- Inline vs Managed policies
+- Trust policy vs permissions policy
+- Instance role vs access key
+- Temporary creds via STS
+
+---
+
+### ❓Common Exam Questions
+
+| Question topic | Answer |
+|------|------|
+| How should EC2 access S3 securely? | Using IAM Role |
+| Best practice for admin user? | No root – use IAM + MFA |
+| Temporary access? | STS, AssumeRole |
+
+---
+
+# SECTION 2 — Networking & VPC
+
+## ✅ Video Checklist
+
+- [ ] What is VPC?
+- [ ] Subnets (Public vs Private)
+- [ ] Internet Gateway
+- [ ] NAT Gateway / Instance
+- [ ] Security Groups / NACLs
+- [ ] VPC Peering / Endpoints
+
+---
+
+## 🌐 VPC – Virtual Private Cloud
+
+### Core components
+
+- CIDR block
+- Subnets
+- Route tables
+- Internet Gateway (IGW)
+- NAT Gateway
+- Security Groups (stateful)
+- Network ACLs (stateless)
+
+### Key distinctions
 
 | Security Group | NACL |
 |------|------|
 | Stateful | Stateless |
-| Attached to instance | Attached to subnet |
-| Allows only | Allows and denies |
+| Applied to instance | Applied to subnet |
+| Allow only | Allow + Deny |
 
 ---
 
-### ⚠ Exam traps
-- No IGW = no internet access
-- Private subnet = needs NAT to access internet
-- Public subnet = route to IGW
+## 🔁 Subnets, IGW, NAT, Route Tables, NACL, SG
+
+Public subnet = route to IGW  
+Private subnet = no IGW, uses NAT for outbound
 
 ---
 
-### ✅ Architecture use case
-Web app in public subnet + DB in private subnet
+# SECTION 3 — Compute
+
+## ✅ Video Checklist
+
+- [ ] EC2 basics
+- [ ] Instance types
+- [ ] Auto Scaling Groups
+- [ ] Load Balancers (ALB / NLB / CLB)
+- [ ] Lambda
+- [ ] Containers
 
 ---
 
-### 📌 Section Summary (Exam Focus)
-- VPC = network
-- SG protects instances
-- NACL protects subnets
+## 💻 EC2 – Elastic Compute Cloud
+
+| Concept | Notes |
+|------|------|
+| On-Demand | Pay per second |
+| Reserved | 1 or 3 years |
+| Spot | Cheapest, interruptible |
+| Dedicated | Compliance |
+
+User Data = bootstrap script  
+AMI = template
 
 ---
 
-# 📍 SECTION 3 – Compute
+## ⚖️ Auto Scaling & Load Balancers
 
-## 🔹 EC2 – Elastic Compute Cloud
-
-### 📌 Definition
-Scalable virtual servers (VMs) in AWS.
-
----
-
-### ⚙ Key concepts
-- Instance types (t2, m5, c5…)
-- AMI
-- EBS volumes
-- User data scripts
-- Auto Scaling Group
+- ALB (HTTP/HTTPS – Layer 7)
+- NLB (TCP/UDP – Layer 4)
+- ASG + CloudWatch metrics
 
 ---
 
-### ✅ EC2 Use cases
-- Websites
-- Legacy applications
-- Custom environments
+## ⚡ Lambda
+
+- Max 15 minutes
+- Serverless
+- Pay per execution
+- Supports many languages
 
 ---
 
-### ⚠ Exam traps
-- EBS is tied to one AZ
-- Stop vs Terminate = data loss risk
-- Instance store = temporary
+## 📦 Containers – ECS / Fargate / EKS
+
+| Service | Use case |
+|------|------|
+| ECS | Simple containers |
+| Fargate | Serverless containers |
+| EKS | Kubernetes |
 
 ---
 
-## 🔹 Lambda
+# SECTION 4 — Storage
 
-### 📌 Definition
-Serverless compute service that runs code on demand.
+## ✅ Video Checklist
+
+- [ ] S3 Basics
+- [ ] Storage classes
+- [ ] EBS vs EFS
+- [ ] Lifecycle rules
+
+---
+
+## 🪣 S3 – Simple Storage Service
 
 | Feature | Value |
 |------|------|
-Max runtime | 15 minutes  
-Scaling | Automatic  
-Servers | Not managed by you  
+| Object storage | Yes |
+| Max object size | 5TB |
+| Min storage size | 0 bytes |
+| Durability | 99.999999999% |
 
-✅ Best for event-driven tasks  
-⚠ Not for long-running applications
+Storage classes:
+- Standard
+- IA
+- One Zone IA
+- Glacier / Deep Archive
+- Intelligent Tiering
 
 ---
 
-## 🔹 Containers (ECS / Fargate / EKS)
+## 💾 EBS / EFS / FSx
 
-| Service | Main idea |
+| Service | Usage |
 |------|------|
-ECS | Container orchestration  
-Fargate | Serverless containers  
-EKS | Kubernetes  
+| EBS | Block, single EC2 |
+| EFS | Multi EC2, shared |
+| FSx | High performance |
 
 ---
 
-### 📌 Section Summary (Exam Focus)
-- EC2 = full control
-- Lambda = serverless
-- Fargate = containers without server management
+## 🔁 S3 Lifecycle & Replication
+
+- Move objects between tiers automatically
+- CRR / SRR
+- Versioning required
 
 ---
 
-# 📍 SECTION 4 – Storage
+# SECTION 5 — Databases
 
-## 🔹 S3 – Simple Storage Service
+## RDS / Aurora
 
-### 📌 Definition
-Object storage system (not a file system).
-
----
-
-### 🧠 Features
-- 11 9’s durability
-- Versioning
-- Lifecycle rules
-- Encryption
-- Storage classes
+- Managed SQL
+- Multi-AZ = failover
+- Read Replicas = scaling
 
 ---
 
-### 📊 Storage Classes
+## DynamoDB
 
-| Type | Use |
-|------|------|
-Standard | Frequent access  
-IA | Infrequent  
-Glacier | Archive  
+- NoSQL
+- Single-digit ms latency
+- Global tables
 
 ---
 
-### ⚠ Exam traps
-- Not for databases
-- Bucket name is global
-- Region based
-- Object size limit: 5 TB
+## ElastiCache
+
+- Redis / Memcached
+- Very high performance
 
 ---
 
-## 🔹 EBS vs EFS
-
-| Feature | EBS | EFS |
-|------|------|------|
-Type | Block | File  
-Multi-AZ | ❌ | ✅  
-Usage | EC2 only | Multiple instances  
-
----
-
-### 📌 Section Summary (Exam Focus)
-- S3 = objects
-- EBS = disk for EC2
-- EFS = shared file storage
-
----
-
-# 📍 SECTION 5 – Databases
-
-| Service | Type | Use |
-|------|------|------|
-RDS | SQL | Structured data  
-DynamoDB | NoSQL | Massive scale  
-Aurora | SQL | High-performance  
-ElastiCache | Cache | Speed up apps  
-
----
-
-### ⚠ Exam traps
-- RDS Multi-AZ = High Availability (not scaling)
-- DynamoDB = Serverless NoSQL
-- Aurora = AWS-native database
-
----
-
-### 📌 Section Summary (Exam Focus)
-- SQL = structured
-- Dynamo = scalable & serverless
-- Cache = high speed
-
----
-
-# 📍 SECTION 6 – Messaging & Serverless Architectures
+# SECTION 6 — Messaging & Serverless
 
 | Service | Role |
 |------|------|
-SQS | Queue  
-SNS | Pub/Sub  
-EventBridge | Events + rules  
-Step Functions | Workflows  
-
-✅ Used for decoupling systems
+| SQS | Queue |
+| SNS | Pub/Sub |
+| EventBridge | Event routing |
 
 ---
 
-# 📍 SECTION 7 – Monitoring & Security
+# SECTION 7 — Monitoring & Security
 
-| Service | Purpose |
+| Tool | Purpose |
 |------|------|
-CloudWatch | Metrics & logs  
-CloudTrail | Audit trail  
-AWS Shield | DDoS  
-KMS | Encryption  
+| CloudWatch | Metrics/Logs |
+| CloudTrail | API logs |
+| Config | Resource tracking |
+| KMS | Encryption |
+| WAF | Protect from attacks |
 
 ---
 
-### 📌 Section Summary (Exam Focus)
-- CloudWatch = monitoring
-- CloudTrail = auditing
-- KMS = encryption
+# SECTION 8 — Cost Optimization
 
----
-
-# 📍 SECTION 8 – Cost Optimization
-
-## 💰 Key principles
-- Right sizing
-- Reserved Instances
+- Use tags
+- Use right sizing
 - Spot instances
-- Lifecycle rules
-- Storage class choice
-
-⚠ Cost scenarios = common in the exam
+- Savings Plans
+- S3 lifecycle
 
 ---
 
-# 📍 FINAL SECTION – EXAM NOTES
+# FINAL SECTION — Exam Tips & Common Pitfalls
 
-## 📌 Must-know values
+✅ Always pick:
+- Most scalable
+- Most serverless
+- Most highly available
+- Most secure by default
 
-- S3 durability: **99.999999999%**
-- Lambda max duration: **15 minutes**
-- EBS single AZ
-- DynamoDB = serverless NoSQL
-- Multi-AZ = HA, not performance
+❌ Avoid:
+- Single AZ solutions
+- EC2 when Lambda fits
+- Manual scaling
 
 ---
 
-## 🧠 Architecture Method for Exam
+# 🗓️ 14-Day Revision Plan
 
-Always ask:
-1. How to make it **scalable**?
-2. How to make it **highly available**?
-3. How to make it **secure**?
-4. How to make it **cost-efficient**?
+| Day | Focus |
+|------|------|
+| 1 | IAM + Security |
+| 2 | VPC + Subnets |
+| 3 | EC2 + ASG |
+| 4 | Load Balancers |
+| 5 | S3 |
+| 6 | Databases |
+| 7 | Messaging |
+| 8 | Full revision |
+| 9 | Practice Exam 1 |
+| 10 | Weak Areas |
+| 11 | Practice Exam 2 |
+| 12 | Architecture Patterns |
+| 13 | Review Notes |
+| 14 | Light review + rest |
+
+---
+
+✅ If you want, next I can generate:
+
+- A **quiz section in Markdown**
+- A **Cheat Sheet (1 page)**
+- Version for **Notion / Obsidian / iPad note app**
+
+Just say: **"Make me the AWS cheat sheet page"**
