@@ -6,8 +6,8 @@
 | Course | AWS Certified Solutions Architect – Associate (SAA-C03) |
 | Source | Udemy |
 | Objective | Pass the AWS SAA-C03 exam |
-| Start Date | __________ |
-| Target Exam Date | __________ |
+| Start Date | 2025-12-01 |
+| Target Exam Date | 2025-12-30 |
 | Status | In progress |
 
 ---
