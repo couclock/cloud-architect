@@ -72,6 +72,10 @@ Pass the AWS Certified Solutions Architect Associate (SAA-C03) exam with confide
 
 ---
 
+## Regions, AZs and Edge locations
+
+- How to choose the right region ? Compliance -> Latency -> Service availability -> Price
+
 ## 🔐 IAM – Identity & Access Management
 
 ### 📌 Key Concepts
