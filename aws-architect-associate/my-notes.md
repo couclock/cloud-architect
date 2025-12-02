@@ -75,6 +75,7 @@ Pass the AWS Certified Solutions Architect Associate (SAA-C03) exam with confide
 ## Regions, AZs and Edge locations
 
 - How to choose the right region ? Compliance -> Latency -> Service availability -> Price
+- 400+ edges locations in 90+ cities over 40+ countries
 
 ## 🔐 IAM – Identity & Access Management
 
