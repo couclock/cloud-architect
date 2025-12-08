@@ -78,7 +78,7 @@ Here’s the transcript:
 **Exam Tips**
 - Match instance family ↔ workload type  
 - Larger sizes = more vCPU + RAM  
-- Use AWS docs or **ec2instances.info** to compare specs & pricing  
+- Use AWS docs or **[instances.vantage.sh](https://instances.vantage.sh/)** to compare specs & pricing  
 
 ## EC2 Security Groups (Firewall Rules)
 
@@ -236,7 +236,7 @@ Here’s the transcript:
 - ⚡ Up to **90% discount** vs On-Demand
 - 💵 Define **max spot price** → instance runs if current < max
 - ⏱ 2-min **grace period** when reclaimed → stop or terminate
-- ⬜ Spot Block → 1–6 hrs guaranteed no interruption
+- ⬜ Spot Block → 1–6 hrs guaranteed no interruption (deprecated)
 - ✔ Best for **batch, data analysis, fault-tolerant workloads**
 - ❌ Not for critical apps/DB
 

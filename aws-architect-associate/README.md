@@ -16,8 +16,8 @@
 
 1. [🎯 Goal](#-goal)
 2. [Section 1 – AWS Fundamentals & IAM](section-1.md)
-   - [Regions, AZs and Edge locations](section-1.md#regions)
-   - [IAM – Identity & Access Management](section-1.md#iam)
+   - [Regions, AZs and Edge locations](section-1.md#regions-azs-and-edge-locations)
+   - [IAM – Identity & Access Management](section-1.md#-iam--identity--access-management)
 3. [Section 2 – Elastic Compute Cloud - EC2](section-2.md)
 
 
@@ -63,58 +63,6 @@ Pass the AWS Certified Solutions Architect Associate (SAA-C03) exam with confide
 
 ---
 
-# SECTION 1 — AWS Fundamentals & IAM
-
-## ✅ Video Checklist
-
-- [ ] What is Cloud Computing?
-- [ ] Regions, AZs, Edge Locations
-- [ ] Shared Responsibility Model
-- [ ] IAM Introduction
-- [ ] IAM Users / Groups / Roles / Policies
-- [ ] Hands-on: Create IAM user & policy
-
----
-
-## Regions, AZs and Edge locations
-
-- How to choose the right region ? Compliance -> Latency -> Service availability -> Price
-- 400+ edges locations in 90+ cities over 40+ countries
-
-## 🔐 IAM – Identity & Access Management
-
-### 📌 Key Concepts
-
-- Users: real people / services
-- Groups: collection of users
-- Roles: AWS services take roles
-- Policies: JSON permission documents
-
-### 🧠 Important Notes
-
-- Always use **least privilege principle**
-- Never use root user for daily tasks
-- Use **MFA** everywhere
-- Roles are used instead of access keys on EC2
-
-### 📝 Example policies ideas / exam concepts
-
-- Inline vs Managed policies
-- Trust policy vs permissions policy
-- Instance role vs access key
-- Temporary creds via STS
-
----
-
-### ❓Common Exam Questions
-
-| Question topic | Answer |
-|------|------|
-| How should EC2 access S3 securely? | Using IAM Role |
-| Best practice for admin user? | No root – use IAM + MFA |
-| Temporary access? | STS, AssumeRole |
-
----
 
 # SECTION 2 — Networking & VPC
 
