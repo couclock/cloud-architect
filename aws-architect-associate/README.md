@@ -18,7 +18,9 @@
 2. [Section 1 – AWS Fundamentals & IAM](section-1.md)
    - [Regions, AZs and Edge locations](section-1.md#regions-azs-and-edge-locations)
    - [IAM – Identity & Access Management](section-1.md#-iam--identity--access-management)
-3. [Section 2 – Elastic Compute Cloud - EC2](section-2.md)
+3. Section 2 – Elastic Compute Cloud - EC2
+   - [Fundamentals](section-2.1.md)
+   - [Solutions Architect Associate level](section-2.2.md)
 
 
 3. [Section 2 – Networking & VPC](#-section-2--networking--vpc)

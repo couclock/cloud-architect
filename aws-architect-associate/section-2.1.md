@@ -1,4 +1,4 @@
-# Elastic Compute Cloud - EC2
+# EC2 Fundamentals
 
 Prompt to use:
 Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
