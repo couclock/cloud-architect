@@ -15,8 +15,12 @@
 ## 📚 Table of Contents
 
 1. [🎯 Goal](#-goal)
-2. [Section 1 – AWS Fundamentals & IAM](#-section-1--aws-fundamentals--iam)
-   - [IAM – Identity & Access Management](#-iam--identity--access-management)
+2. [Section 1 – AWS Fundamentals & IAM](section-1.md)
+   - [Regions, AZs and Edge locations](section-1.md#regions)
+   - [IAM – Identity & Access Management](section-1.md#iam)
+3. [Section 2 – Elastic Compute Cloud - EC2](section-2.md)
+
+
 3. [Section 2 – Networking & VPC](#-section-2--networking--vpc)
    - [VPC – Virtual Private Cloud](#-vpc--virtual-private-cloud)
    - [Subnets, IGW, NAT, Route Tables, NACLs, Security Groups](#-subnets-igw-nat-route-tables-nacls-security-groups)
