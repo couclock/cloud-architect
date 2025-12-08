@@ -29,8 +29,6 @@ Keep it extremely concise and easy to memorize. Here's the transcript:
 
 ### 📌 Key Concepts
 
-- Global service
-
 **IAM Overview**
 - 👤 **Users:** map to real people, each with console password  
 - 👥 **Groups:** assign permissions collectively via policies  
@@ -41,8 +39,6 @@ Keep it extremely concise and easy to memorize. Here's the transcript:
 **Management Tools**
 - CLI: manage AWS via commands  
 - SDK: manage AWS programmatically  
-- Credentials Report: audit user accounts  
-- Access Advisor: review user permissions  
 
 **Best Practices**
 - 🚫 Avoid using root account except at setup  
@@ -62,7 +58,7 @@ Keep it extremely concise and easy to memorize. Here's the transcript:
 - Mitigates brute-force attacks  
 
 **MFA Basics**
-- Password + device = stronger authentication  
+- Password + device = stronger authentication (password you know + device you own)
 - Mandatory for root, recommended for all IAM users  
 - Protects even if password is stolen  
 
@@ -153,7 +149,7 @@ Keep it extremely concise and easy to memorize. Here's the transcript:
 - 📄 **Credentials Report:** account-level CSV of all users  
   - Shows: creation date, password status, rotation, MFA, access keys  
   - Helps identify unused or outdated credentials  
-- 🔍 **Access Advisor:** user-level tool  
+- 🔍 **Access Advisor:** user-level tool (user details > Last Accessed)
   - Shows service permissions & last accessed date  
   - Helps enforce **least privilege**  
 
@@ -167,12 +163,6 @@ Keep it extremely concise and easy to memorize. Here's the transcript:
 - Always use **least privilege principle**
 - Never use root user for daily tasks
 - Use **MFA** everywhere
-    - MFA: password you know + device you own
-    - Virtual MFA device: Google auth / Authy
-    - Universal 2nd Facto (U2F): Yubikey by yubiko (USB stick)
-    - Hardware Key fob MFA Device: Gemalto (physical code generator)
-    - Hardware Key fob MFA Device for AWS GovCloud: SurePassID (physical code generator)
-- Roles are used instead of access keys on EC2
 
 ### 📝 Example policies ideas / exam concepts
 
