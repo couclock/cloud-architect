@@ -75,3 +75,68 @@ Here’s the transcript:
 - Can't change PG type after creation  
 - Enhanced networking boosts Cluster PG performance
 
+## Elastic Network Interfaces (ENI)
+
+### Essentials
+- ENI = virtual network card in a **VPC**.
+- Bound to **one AZ**; attach only to EC2s in same AZ.
+- EC2 gets **primary ENI (eth0)** automatically.
+- You can create **secondary ENIs (eth1, eth2...)** manually.
+
+### ENI Attributes
+- Primary private IPv4 + optional **secondary private IPv4s**.
+- Public/Elastic IPs can map to private IPv4s.
+- One or more **Security Groups**.
+- MAC address, DNS names.
+
+### Use Cases ⚙️
+- **Failover**: move ENI (and its private IP) between instances.
+- **Static private IP** without stopping/starting instances.
+- **Multi-homed networking** (multiple ENIs with different SGs).
+
+### Behavior
+- ENIs created with EC2 → auto-deleted when instance terminates.
+- ENIs created manually → **persist** after EC2 termination.
+- Can **detach/attach** ENIs on the fly.
+
+### Limitations / Rules
+- ENI locked to **its AZ**.
+- One ENI attached to **one EC2 at a time**.
+
+### Exam Tips 🧠
+- ENI = quick failover by re-attaching interface.
+- Secondary ENI = extra private IPs / SG separation.
+- Manually created ENIs persist → good for IP continuity.
+- ENI provides network access but is **not** for cross-AZ moves.
+
+## EC2 Hibernate
+
+### Concept
+- Preserve **RAM state** by saving it to the **encrypted EBS root volume**.
+- On start → RAM restored → **fast boot**, apps/caches preserved.
+- OS is *frozen* instead of restarted.
+
+### Requirements ⚠️
+- Root volume = **EBS**, **encrypted**, large enough for RAM dump.
+- Instance RAM < ~150 GB (approx, limit not in exam).
+- Not supported on **bare metal**.
+- Works on: Linux, Windows; On-Demand, Reserved, Spot.
+- Hibernate duration ≤ ~60 days.
+
+### Lifecycle
+- Hibernate → instance enters *stopping*, RAM dumped to EBS → instance stops.
+- Start → RAM loaded from EBS → uptime continues (OS never “rebooted”).
+
+### Use Cases
+- Long-running processes needing state preserved.
+- Fast restart of complex apps.
+- Keep in-memory caches warm.
+
+### Behaviors vs Stop/Start
+- Stop/Start: OS reboots, user data may run again, RAM lost.
+- Hibernate: RAM restored, OS state intact.
+
+### Exam Tips 🧠
+- **Root EBS must be encrypted** + sized ≥ RAM.
+- Hibernate ≠ Stop. Hibernate keeps process/memory state.
+- Great distractor Q: uptime after hibernation ≠ reset to zero.
