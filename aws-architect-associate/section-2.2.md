@@ -40,3 +40,38 @@ Here’s the transcript:
 - NAT Gateway = private subnet → Internet.
 - IGW = public subnet → Internet.
 - EIPs generally = bad architecture → use DNS/ALB.
+
+## EC2 Placement Groups (SAA Revision)
+
+### 🧩 Types
+- **Cluster PG**  
+  - Same AZ; tightly packed  
+  - ⚡ Ultra-low latency, high throughput (10+ Gbps)  
+  - ❗ High blast radius  
+  - Use: HPC, big data, fast compute jobs
+
+- **Spread PG**  
+  - Instances on distinct hardware across AZs  
+  - 🛡️ Max HA; isolates failures  
+  - Limit: **7 instances per AZ per PG**  
+  - Use: critical apps needing failure isolation
+
+- **Partition PG**  
+  - Instances in **partitions = rack groups**  
+  - Up to **7 partitions per AZ**, multi-AZ  
+  - Supports hundreds of instances  
+  - Use: partition-aware systems (HDFS, HBase, Cassandra, Kafka)  
+  - Each partition isolated from rack failure
+
+### 📝 Exam Tips
+- Cluster = performance; Spread = HA; Partition = scalable HA  
+- Cluster only in **one AZ**  
+- Spread strict **7-instance** rule  
+- Partition for big data distributed systems  
+- Partition metadata visible via **Instance Metadata Service**
+
+### 🧠 Key Rules
+- Create PG **before** launching instances  
+- Can't change PG type after creation  
+- Enhanced networking boosts Cluster PG performance
+
