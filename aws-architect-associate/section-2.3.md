@@ -213,4 +213,26 @@ The **Multi-Attach** feature allows the **same EBS volume** to be attached to **
 - Requires a **cluster-aware file system** (not xfs/ext4).
 - Cannot attach across different AZs.
 
-That's it! Let me know if you want this broken into slides, a shorter summary, or converted into another format.
+---
+
+## EBS Encryption
+
+🔐 **Basics**
+- Encrypt at creation → data at rest + in-flight encrypted  
+- Snapshots + child volumes inherit encryption  
+- AES-256 via KMS, transparent, minimal latency  
+
+🛠️ **Encrypt Existing Unencrypted Volume**
+1. Create snapshot (unencrypted)  
+2. Copy snapshot → **Enable encryption** (pick KMS key)  
+3. Create volume from encrypted snapshot  
+4. Attach new encrypted volume to instance  
+
+⚡ **Shortcut**
+- From unencrypted snapshot → *Create Volume* → toggle **Enable Encryption**
+
+📌 **Exam Tips**
+- Encryption state propagates vol → snap → vol  
+- Cannot directly encrypt an existing volume  
+- Snapshot copy (incl. cross-region) can enable encryption  
+- KMS CMK or AWS-managed key required  
