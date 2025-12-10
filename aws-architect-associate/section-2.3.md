@@ -45,4 +45,37 @@ Here’s the transcript:
 - 🛠️ **Use Cases**
   - Root volumes, databases, OS disks, apps needing persistence
   - Failover via detaching/attaching to new EC2 (same AZ)
+ 
+## EBS Snapshots
+
+### 📸 Core Concepts
+- Point-in-time backup of **EBS volumes**
+- 💡 No need to detach volume (but recommended)
+- Copy snapshots **across AZs/Regions**
+- Restore snapshot → create new EBS volume in any AZ
+
+### 🧩 Key Features
+- **Archive Tier**  
+  - Up to **75% cheaper**  
+  - Restore delay **24–72 hrs**
+
+- **Recycle Bin**  
+  - Protects from accidental deletion  
+  - Retention: **1 day–1 year**  
+  - Supports EBS snapshots + AMIs
+
+- **Fast Snapshot Restore (FSR)**  
+  - Pre-initializes snapshot → ⚡ zero-latency first use  
+  - Costly; use for large/critical restores
+
+### 📝 Exam Tips
+- Snapshots are **incremental** (only changes stored)  
+- Needed to **move EBS volume across AZ**  
+- Useful for **DR** via cross-region copy  
+- Snapshots support **encryption** (and inherit encryption)
+
+### 🧠 Ops Notes
+- Create Volume from Snapshot → choose **any AZ**  
+- Archive snapshots require waiting before restore  
+- Recycle Bin gives recoverability; rules can be resource-wide
 
