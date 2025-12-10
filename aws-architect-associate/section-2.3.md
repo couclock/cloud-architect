@@ -46,6 +46,7 @@ Here’s the transcript:
   - Root volumes, databases, OS disks, apps needing persistence
   - Failover via detaching/attaching to new EC2 (same AZ)
  
+---
 ## EBS Snapshots
 
 ### 📸 Core Concepts
@@ -79,7 +80,8 @@ Here’s the transcript:
 - Archive snapshots require waiting before restore  
 - Recycle Bin gives recoverability; rules can be resource-wide
 
-## AMIs (Amazon Machine Images) – SAA Revision
+---
+## AMIs (Amazon Machine Images)
 
 ### 📦 Core Concepts
 - AMI = **preconfigured image** to launch EC2 instances  
@@ -111,7 +113,8 @@ Here’s the transcript:
 - Combine AMI + user data for light final config  
 - Custom AMIs help auto-scale groups launch quicker
 
-## EC2 Instance Store (SAA Revision)
+---
+## EC2 Instance Store
 
 ### ⚡ Core Concepts
 - High-performance **local NVMe/SATA storage** physically attached to the EC2 host  
@@ -138,6 +141,7 @@ Here’s the transcript:
 - Instance Store can hit **>3M IOPS**, far beyond GP2/GP3 limits  
 - Always ephemeral → never store critical data without replication
 
+---
 ## EBS Volumes & Volume Types
 
 So, now, let's talk about EBS volumes and their different volume types. They come in six different types today, and we can group them in several categories.
