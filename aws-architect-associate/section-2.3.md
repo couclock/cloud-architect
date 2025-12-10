@@ -235,4 +235,55 @@ The **Multi-Attach** feature allows the **same EBS volume** to be attached to **
 - Encryption state propagates vol → snap → vol  
 - Cannot directly encrypt an existing volume  
 - Snapshot copy (incl. cross-region) can enable encryption  
-- KMS CMK or AWS-managed key required  
+- KMS CMK or AWS-managed key required
+
+---
+## Amazon EFS
+
+📌 **Core**
+- Managed **NFS** (POSIX) shared file system
+- Mount across **multiple AZs** + many EC2 instances
+- **Linux-only** (not Windows)
+- **Pay-per-use**, auto-scaling to PBs
+- More expensive than EBS (~3× GP2)
+
+🔐 **Security**
+- Uses **security groups** (NFS port 2049)
+- **KMS encryption at rest**
+- SG on EFS must allow inbound NFS from EC2 SGs
+
+🗂️ **Use Cases**
+- Web/CMS (WordPress), shared content, data sharing
+
+⚡ **Performance Modes**
+- **General Purpose** (default) → low latency (web apps)
+- **Max I/O** → high throughput, high latency (big data)
+
+🚀 **Throughput Modes**
+- **Bursting** → scales w/ storage size
+- **Provisioned** → set throughput explicitly (pay up front)
+- **Elastic (recommended)** → auto-scale up/down to workload
+
+📦 **Storage Classes**
+- **Standard** → frequent access, multi-AZ
+- **IA (Infrequent Access)** → cheaper storage, retrieval cost  
+- **Archive** → rarely accessed, lowest cost  
+- **One Zone / One Zone-IA** → single AZ, cheaper dev/test
+- **Lifecycle mgmt** → auto-move files between tiers (e.g., 30d → IA, 90d → Archive, access → Standard)
+
+🛠️ **Architecture Tips**
+- Use **Regional** EFS for production (multi-AZ resilience)
+- **One Zone** for dev/cost-sensitive
+- Thousands of NFS clients, 10+ GB/s throughput possible
+
+🔧 **Mounting**
+- EC2 console can auto-mount via user data
+- EFS creates mount targets in **each AZ**
+- Ensure EC2 uses correct SG allowing NFS to EFS SG
+
+📘 **Exam Tips**
+- EFS = **shared, scalable, multi-AZ NFS**
+- Linux-only, POSIX compliant
+- Autoscaling, pay-per-use differentiates from EBS/FSx
+- Select correct **performance + throughput** combo per workload
+
