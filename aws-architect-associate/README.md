@@ -21,6 +21,7 @@
 3. Section 2 – Elastic Compute Cloud - EC2
    - [Fundamentals](section-2.1.md)
    - [Solutions Architect Associate level](section-2.2.md)
+   - [Instance storage](section-2.3.md)
 
 
 3. [Section 2 – Networking & VPC](#-section-2--networking--vpc)
