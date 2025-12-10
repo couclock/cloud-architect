@@ -138,3 +138,75 @@ Here’s the transcript:
 - Instance Store can hit **>3M IOPS**, far beyond GP2/GP3 limits  
 - Always ephemeral → never store critical data without replication
 
+## EBS Volumes & Volume Types
+
+So, now, let's talk about EBS volumes and their different volume types. They come in six different types today, and we can group them in several categories.
+
+### General Purpose SSD (gp2, gp3)
+These balance price and performance for a wide variety of workloads.
+
+- **gp2** and **gp3** are used for general-purpose workloads.
+- Can be used as **boot volumes**.
+- **gp3** (newest generation):
+  - Baseline: **3000 IOPS**, **125 MB/s throughput**
+  - Can increase up to **16,000 IOPS** and **1000 MB/s throughput** independently
+- **gp2**:
+  - Small volumes can burst up to **3000 IOPS**
+  - IOPS scales with size (**3 IOPS per GB**) up to **16,000 IOPS**
+
+**Key takeaway:**  
+gp3 lets you configure IOPS and throughput independently, while gp2 links performance to volume size.
+
+### Provisioned IOPS SSD (io1, io2 / io2 Block Express)
+Used for **critical, low-latency, high-performance workloads**, including databases.
+
+- **io1**:
+  - Size: 4–16 TB
+  - Max IOPS: **64,000** on Nitro EC2 / **32,000** otherwise
+  - IOPS can be provisioned independently of size
+
+- **io2 Block Express**:
+  - Size up to **64 TB**
+  - Sub-millisecond latency
+  - Max IOPS: **256,000**
+  - IOPS-to-size ratio: **1000:1**
+  - Supports **EBS Multi-Attach**
+
+### HDD Volumes (st1, sc1)
+Cannot be used as boot volumes. Used for throughput-intensive or cold data workloads.
+
+- **st1 (Throughput-Optimized HDD)**:
+  - For big data, data warehousing, log processing
+  - Max throughput: **500 MB/s**
+  - Max IOPS: **500**
+
+- **sc1 (Cold HDD)**:
+  - Lowest-cost option, for infrequently accessed data
+  - Max throughput: **250 MB/s**
+  - Max IOPS: **250**
+
+### Summary
+You do **not** need to memorize all numbers for the exam; just understand when to use each type:
+- **gp2/gp3** → general purpose, cost-effective
+- **io1/io2** → provisioned IOPS, high-performance workloads (DBs)
+- **st1/sc1** → throughput or cold data at low cost
+
+If you need **more than 32,000 IOPS**, you must use **EC2 Nitro + io1/io2**.
+
+---
+
+## Multi-Attach Feature
+
+The **Multi-Attach** feature allows the **same EBS volume** to be attached to **multiple EC2 instances** *in the same Availability Zone*.
+
+### Key Points
+- Only supported on **io1** and **io2** volumes.
+- Allows **full read/write access** from multiple instances simultaneously.
+- Useful for:
+  - Clustered Linux applications
+  - Applications needing concurrent write operations
+- Maximum of **16 EC2 instances** per volume.
+- Requires a **cluster-aware file system** (not xfs/ext4).
+- Cannot attach across different AZs.
+
+That's it! Let me know if you want this broken into slides, a shorter summary, or converted into another format.
