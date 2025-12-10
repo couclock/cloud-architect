@@ -79,3 +79,35 @@ Here’s the transcript:
 - Archive snapshots require waiting before restore  
 - Recycle Bin gives recoverability; rules can be resource-wide
 
+## AMIs (Amazon Machine Images) – SAA Revision
+
+### 📦 Core Concepts
+- AMI = **preconfigured image** to launch EC2 instances  
+- Contains: OS, software, configs, monitoring, dependencies  
+- 🚀 Faster boot + consistent configuration  
+- AMIs are **region-specific**, but can be **copied cross-region**
+
+### 🧩 AMI Types
+- **Public AMIs** (AWS-provided: e.g., Amazon Linux 2)  
+- **Custom AMIs** (user-created; must maintain yourself)  
+- **Marketplace AMIs** (vendor-built, paid or free)
+
+### 🛠️ AMI Creation Workflow
+1. Launch EC2  
+2. Customize instance (install software, configs)  
+3. **Stop instance** (recommended for data integrity)  
+4. Create AMI → generates **EBS snapshots**  
+5. Launch new instances from AMI (any AZ in same region)
+
+### 📝 Exam Tips
+- AMIs are **regional**; snapshots enable **cross-region** copy → DR  
+- Best for fleets needing consistent setup + fast scaling  
+- Update AMIs when patching OS/software  
+- Marketplace AMIs may incur extra cost  
+- AMI contains **root volume** snapshot; additional volumes optional
+
+### ⚙️ Operational Notes
+- Launching from AMI = no need to reinstall software → faster initialization  
+- Combine AMI + user data for light final config  
+- Custom AMIs help auto-scale groups launch quicker
+
