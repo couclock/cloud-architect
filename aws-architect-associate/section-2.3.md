@@ -287,3 +287,31 @@ The **Multi-Attach** feature allows the **same EBS volume** to be attached to **
 - Autoscaling, pay-per-use differentiates from EBS/FSx
 - Select correct **performance + throughput** combo per workload
 
+---
+## EBS vs EFS
+
+🧱 **EBS (Block Storage)**
+- Attached to **one EC2 at a time** (except io1/io2 Multi-Attach)
+- **AZ-locked**; move via snapshot → create volume in other AZ
+- **gp2**: IOPS scales w/ size  
+- **gp3/io1/io2**: IOPS configurable independent of size
+- Backups (snapshots) consume **I/O** → avoid during high load
+- Root volume usually deleted on instance termination (configurable)
+- Lower cost than EFS
+
+📁 **EFS (Network File System)**
+- **Multi-AZ**, shared across **hundreds** of EC2 instances
+- Linux-only, **POSIX**, NFSv4.1 (port 2049)
+- Higher cost, but storage tiers reduce spend
+- Ideal for shared content, WordPress, multi-instance workloads
+
+💾 **Instance Store**
+- Physically attached to host
+- **Ephemeral**: data lost on instance stop/terminate
+- Very high performance but non-persistent
+
+📌 **Exam Tips**
+- EBS = single-instance block; EFS = multi-instance shared NFS
+- EBS tied to AZ; EFS spans AZs
+- Move EBS via snapshot → new AZ
+- Instance Store is temporary, not durable
