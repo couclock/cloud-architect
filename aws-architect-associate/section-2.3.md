@@ -111,3 +111,30 @@ Here’s the transcript:
 - Combine AMI + user data for light final config  
 - Custom AMIs help auto-scale groups launch quicker
 
+## EC2 Instance Store (SAA Revision)
+
+### ⚡ Core Concepts
+- High-performance **local NVMe/SATA storage** physically attached to the EC2 host  
+- Offers extremely high IOPS & throughput vs EBS  
+- **Ephemeral**: data lost on **stop, terminate, or host failure**
+
+### 🧩 Use Cases
+- 🚀 Ultra-fast temporary storage  
+- Cache, buffer, scratch space  
+- High-speed processing workloads  
+- NOT for durable data
+
+### 🛑 Limitations
+- No persistence; must manage your own backup/replication  
+- Tied to the *specific host* → data disappears if instance is stopped
+
+### 📝 Exam Tips
+- “Need millions of IOPS / ultra-high disk performance” → **Instance Store**  
+- “Need persistence & durability” → **EBS**  
+- Instance families like **I3 / I4** commonly include Instance Store  
+- Stopping instance ≠ reboot: **stop = data loss**, reboot = data preserved (unless host changes)
+
+### 📈 Performance Context
+- Instance Store can hit **>3M IOPS**, far beyond GP2/GP3 limits  
+- Always ephemeral → never store critical data without replication
+
