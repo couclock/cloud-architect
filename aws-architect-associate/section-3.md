@@ -1,4 +1,4 @@
-# EC2 Instance Storage
+# High Availability & Scalability: ELB & ASG
 
 Prompt to use:
 
