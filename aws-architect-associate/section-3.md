@@ -188,7 +188,7 @@ Here’s the transcript:
 4. Approved traffic → back through GWLB → application  
    → **Transparent to the app**
 
-![GWLB](images/gwlb.png)
+![From Udemy course - Ultimate AWS Certified Solutions Architect Associate](images/gwlb.png)
 
 ### 🗂️ Target Groups
 - EC2 instances (instance ID)
@@ -254,7 +254,7 @@ Here’s the transcript:
   - Each LB node sends traffic **only to targets in its AZ**
   - Client traffic split by LB nodes → can cause imbalance if AZs differ in target count
 
-![](images/cross-zone-load-balancing.png)
+![From Udemy course - Ultimate AWS Certified Solutions Architect Associate](images/cross-zone-load-balancing.png)
 
 
 - ⚙️ **Defaults & Charges**
