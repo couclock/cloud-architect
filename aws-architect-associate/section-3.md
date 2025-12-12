@@ -44,7 +44,7 @@ Here’s the transcript:
 - RDS Multi-AZ = HA but **not** read scaling (use Read Replicas)
 
 ---
-## Load Balancing
+## Elastic Load Balancing overview
 ### 🎯 Purpose
 - Distribute traffic across multiple EC2/backends
 - Single public endpoint; users unaware of backend targets
