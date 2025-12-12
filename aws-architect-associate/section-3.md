@@ -80,5 +80,59 @@ Here’s the transcript:
 - ALB = L7, path/host-based routing  
 - NLB = L4, extreme performance, static IP  
 - Health checks critical for ASG + ELB  
-- Internal LBs for private traffic; external for internet-facing  
+- Internal LBs for private traffic; external for internet-facing
+
+---
+## Application Load Balancer (ALB)
+
+### 🌐 Overview
+- L7 (HTTP/HTTPS only), supports HTTP/2 + WebSockets
+- Routes traffic to **Target Groups**
+- One ALB → many apps/microservices
+- Ideal for microservices, containers (ECS), Lambda
+
+### 🎯 Routing Features
+- **Path-based** (/users → TG1, /search → TG2)
+- **Host-based** (a.example.com → TG1, b.example.com → TG2)
+- **Query/Headers** (e.g., ?Platform=Mobile)
+- **Redirects** (HTTP→HTTPS)
+- **Fixed responses** (custom 4xx/5xx)
+
+### 🎯 Target Groups
+- Types:
+  - EC2 instances (w/ ASG)
+  - ECS tasks (dynamic port mapping)
+  - Lambda functions (serverless)
+  - Private IPs (on-prem)
+- Health checks defined **per TG**
+- ALB picks only healthy targets
+
+### 🧱 Architecture Benefits
+- One ALB replaces multiple CLBs
+- Perfect for multiple apps on one host (containers)
+- Smart routing → microservice patterns
+
+### 🔐 Security
+- LB SG: allow 0.0.0.0/0 on 80/443
+- EC2 SG: allow only LB SG as source
+- Enforces traffic **through** ALB only
+
+### 🧾 X-Forwarded Headers
+- `X-Forwarded-For`: Client IP
+- `X-Forwarded-Port`: Port
+- `X-Forwarded-Proto`: HTTP/HTTPS
+- Needed because ALB terminates connections
+
+### 🗂 Listener Rules
+- Conditions: Host, Path, Method, Source IP, Headers, Query
+- Actions: Forward → TGs, Redirect, Fixed response
+- Priorities determine rule evaluation order
+- Default rule catches unmatched requests
+
+### 📝 Exam Tips
+- ALB = L7, intelligent routing (path/host/query)
+- Supports ECS dynamic ports → **critical SAA concept**
+- ALB can front Lambda → serverless HTTP ingress
+- Health checks always at TG level
+- ALB DNS name fixed; no static IP (use NLB if needed)
 
