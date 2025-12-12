@@ -42,3 +42,43 @@ Here’s the transcript:
 - Horizontal scaling requires distributed/stateless design
 - ASG + ELB = scalability + HA
 - RDS Multi-AZ = HA but **not** read scaling (use Read Replicas)
+
+---
+## Load Balancing
+### 🎯 Purpose
+- Distribute traffic across multiple EC2/backends
+- Single public endpoint; users unaware of backend targets
+- Enables HA, fault tolerance, scalability
+
+### 🔍 Why Use ELB
+- Spread load across instances
+- Health checks → route only to healthy targets
+- SSL/TLS termination
+- Session stickiness (cookies)
+- Multi-AZ support
+- Public vs internal LB
+- Deep AWS integration: ASG, ECS, ACM, CW, R53, WAF, GA
+
+### ❤️ Health Checks
+- Protocol + Port + Path (e.g., HTTP:4567/health)
+- Must return 200 OK → else instance marked unhealthy
+- LB stops routing to unhealthy targets
+
+### ⚙️ Managed ELB Types
+- **CLB (old, deprecated)**: HTTP/HTTPS, TCP/SSL  
+- **ALB (L7)**: HTTP/HTTPS, WebSocket  
+- **NLB (L4)**: TCP/TLS/UDP, ultra-fast, static IP  
+- **GWLB (L3)**: IP-level, appliance insertion (firewalls, etc.)
+- Prefer newer generation (ALB/NLB/GWLB)
+
+### 🔐 Security Groups
+- **LB SG**: allow 0.0.0.0/0 on 80/443
+- **EC2 SG**: allow only LB SG as source on app port (e.g., 80)
+- Ensures traffic flows *only* through LB
+
+### 📝 Exam Tips
+- ALB = L7, path/host-based routing  
+- NLB = L4, extreme performance, static IP  
+- Health checks critical for ASG + ELB  
+- Internal LBs for private traffic; external for internet-facing  
+
