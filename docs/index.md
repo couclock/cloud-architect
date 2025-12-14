@@ -1,4 +1,4 @@
-# My project portfolio
+# Project portfolio
 
 ## My proposal
 
@@ -6,7 +6,7 @@ Analyze and make proposals to improve your AWS infrastructure regarding security
 
 
 
-# My notes on certifications
+# Notes on certifications
 
 ## AWS certifications
 
