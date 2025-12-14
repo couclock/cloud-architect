@@ -1,5 +1,14 @@
-# Mon project portfolio
+# My project portfolio
 
-## Mes services
+## My proposal
 
-Je vous propose d'analyser vos projets AWS pour optimiser l'infrastructure en termes de securité, fiaiblité, résilience, performance et cout.
+Analyze and make proposals to improve your AWS infrastructure regarding security, reliability, performance and cost.
+
+
+
+# My notes on certifications
+
+## AWS certifications
+
+- [Medium article](https://medium.com/@dany.lecoq/why-i-went-back-to-aws-certification-after-20-years-in-engineering-27ed6aa517e3) related to AWS Cloud Practitioner & AWS AI Practitioner
+- AWS Certified Architect Associate (SAA-CA3) [cheat sheets](cheat-sheets/aws-architect-associate/README.md)
