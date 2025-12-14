@@ -322,8 +322,11 @@ Here’s the transcript:
   - SNI = hostname-based cert selection
   - Prefer **ACM** over IAM/import
 
+
 ---
-## ELB Connection Draining / Deregistration Delay
+
+## ELB Connection Draining - Deregistration Delay
+
 
 - 🔄 Purpose: allow in-flight requests to finish before instance removal
 - Names:
