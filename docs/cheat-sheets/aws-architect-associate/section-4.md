@@ -354,35 +354,102 @@ Here’s the transcript:
 
 
 ---
-## Cross-Zone Load Balancing (XZLB)
+## RDS & Aurora: Backups, Security, Proxy
 
-- 🎯 **Goal**: Distribute traffic evenly across all registered targets in all AZs
+### 💾 RDS Automated Backups
+- Daily full backup + transaction logs every **5 min**
+- **Point-in-time recovery (PITR)** up to 5 min ago
+- Retention: **1–35 days**
+- Set **0 days = disabled** (RDS only)
 
-- 🔄 **With XZLB ON**
-  - Each LB node sends traffic evenly to **all** targets (all AZs)
-  - Fixes uneven AZ target counts (e.g., 2 vs 8 instances)
-  - ALB: **no inter-AZ data charges**
-  - NLB/GWLB: **charges apply** for inter-AZ traffic
+### 📸 Manual DB Snapshots
+- User-triggered
+- **Retained indefinitely**
+- Used for long-term backup & cost-saving tricks
+- Restore always creates a **new DB**
 
-- 🚫 **With XZLB OFF**
-  - Each LB node sends traffic **only to targets in its AZ**
-  - Client traffic split by LB nodes → can cause imbalance if AZs differ in target count
+### 💰 Cost-Saving Exam Trick
+- Take snapshot → delete RDS → keep snapshot
+- Restore snapshot when needed
+- Snapshot storage cheaper than running DB
 
-![From Udemy course - Ultimate AWS Certified Solutions Architect Associate](images/cross-zone-load-balancing.png)
+### 💾 Aurora Backups
+- Automated backups **cannot be disabled**
+- Retention: **1–35 days**
+- PITR supported
+- Manual snapshots supported (infinite retention)
 
+### 🔄 Restore Options
+- Backup/snapshot → **new DB**
+- Restore **RDS MySQL from S3**
+- Restore **Aurora MySQL from S3**:
+  - Requires **Percona XtraBackup**
+- On-prem → S3 → RDS/Aurora
 
-- ⚙️ **Defaults & Charges**
-  - **ALB**: XZLB **ON by default**  
-    - Can override per **Target Group** (force ON/OFF)  
-    - No inter-AZ data charge
-  - **NLB / GWLB**: XZLB **OFF by default**  
-    - Enabling = 💰 inter-AZ data charges
-  - **CLB**: XZLB OFF by default; enabling = **no charge** (legacy)
+### 🧬 Aurora Database Cloning
+- Fast, cost-effective copy of Aurora cluster
+- Uses **copy-on-write**
+- No snapshot/restore needed
+- Ideal for **staging from prod**
 
-- 📝 **Exam Tips**
-  - ALB = XZLB always available + free  
-  - NLB/GWLB = enabling may incur cost  
-  - XZLB ensures even distribution across uneven AZ capacity
+---
+
+### 🔐 RDS & Aurora Security
+
+#### 🔒 Encryption at Rest
+- Uses **KMS**
+- Defined **at launch only**
+- Unencrypted DB → snapshot → restore encrypted
+- Unencrypted master → replicas **cannot** be encrypted
+
+#### 🔐 Encryption in Transit
+- TLS supported by default
+- Clients use AWS-provided TLS certs
+
+#### 👤 Authentication
+- Username/password
+- **IAM authentication** supported
+
+#### 🌐 Network Security
+- Controlled via **Security Groups**
+- No SSH access (managed service)
+- Exception: **RDS Custom**
+
+#### 📜 Audit Logs
+- Enable DB audit logs
+- Export to **CloudWatch Logs** for retention
+
+---
+
+### 🔌 Amazon RDS Proxy
+
+### 🎯 Purpose
+- **Connection pooling** for RDS & Aurora
+- Reduces DB CPU/RAM & connection exhaustion
+- Critical for **Lambda-heavy workloads**
+
+### ⚡ Key Benefits
+- Fully managed, **serverless**, auto-scaling
+- **Multi-AZ**, highly available
+- Reduces failover time by **up to 66%**
+- No app code changes
+
+### 🔐 Security Benefits
+- Enforce **IAM authentication**
+- Credentials stored in **AWS Secrets Manager**
+- **Never publicly accessible** (VPC-only)
+
+### 🧩 Supported Engines
+- RDS: MySQL, PostgreSQL, MariaDB, SQL Server
+- Aurora: MySQL & PostgreSQL
+
+### 📝 Exam Tips
+- “Too many DB connections / Lambda” → **RDS Proxy**
+- “Reduce failover time” → **RDS Proxy**
+- “Encrypt existing DB” → snapshot + restore
+- Aurora backups **cannot be disabled**
+- Cloning = fastest way to copy Aurora DB
+
 
   ---
   ## SSL / TLS Certificates & SNI (ELB)
