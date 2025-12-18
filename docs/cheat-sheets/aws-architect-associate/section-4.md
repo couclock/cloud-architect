@@ -452,140 +452,101 @@ Here’s the transcript:
 
 
   ---
-  ## SSL / TLS Certificates & SNI (ELB)
+  ## Amazon ElastiCache
 
-  - 🔐 **SSL/TLS** = In-transit encryption (HTTPS)
-  - SSL = legacy term, **TLS** = modern standard
-  - Public certs issued by **CAs** (e.g., DigiCert, Let’s Encrypt)
-  - Certs expire → must renew
-
-- 🌐 **ELB SSL Termination**
-  - Client → **HTTPS** → Load Balancer
-  - LB decrypts → backend can use **HTTP** (inside VPC)
-  - Uses **X.509 server certificate**
-
-- 🧾 **Certificate Management**
-  - Use **ACM (AWS Certificate Manager)** ✅
-  - Can import own certs
-  - HTTPS listener requires **default cert**
-  - Optional additional certs for multiple domains
-
-- 🧠 **SNI (Server Name Indication)** ⭐
-  - Client sends **hostname during TLS handshake**
-  - LB selects correct SSL cert
-  - Enables **multiple domains + certs on one LB**
-  - Supported by:
-    - ✅ **ALB**
-    - ✅ **NLB**
-    - ✅ **CloudFront**
-    - ❌ **CLB** (old)
-
-- ⚖️ **ELB Certificate Support**
-  - **CLB**
-    - ❌ One cert only
-    - Multiple domains → multiple CLBs
-  - **ALB**
-    - ✅ Multiple certs per listener
-    - Uses **SNI**
-  - **NLB**
-    - ✅ Multiple certs (TLS listeners)
-    - Uses **SNI**
-
-- ⚙️ **Listener Setup**
-  - ALB: Listener = **HTTPS :443**
-  - NLB: Listener = **TLS**
-  - Choose:
-    - Cert source (ACM preferred)
-    - **SSL/TLS security policy** (legacy vs modern)
-
-- 📝 **Exam Tips**
-  - Multiple SSL certs on one LB → **ALB or NLB**
-  - SNI = hostname-based cert selection
-  - Prefer **ACM** over IAM/import
+### Overview
+- Managed **in-memory cache** (Redis / Memcached)
+- Sub-millisecond latency
+- Reduces **RDS read load**
+- Helps build **stateless applications**
 
 
----
+### Engines
+- **Redis / Valkey (recommended)**
+- Multi-AZ + auto-failover
+- Read replicas
+- Persistence (AOF)
+- Backup & restore
+- Advanced data types (sets, sorted sets)
+- **Memcached**
+- Sharding only (no replication)
+- No HA (node failure = data loss)
+- Multi-threaded
 
-## ELB Connection Draining - Deregistration Delay
+
+### Common Architectures
+- **Cache-aside (read-through)**
+- Cache hit → return data
+- Cache miss → read DB → write cache
+- **Session Store**
+- Store user sessions in cache
+- Enables stateless apps
 
 
-- 🔄 Purpose: allow in-flight requests to finish before instance removal
-- Names:
-  - Classic Load Balancer → Connection Draining
-  - ALB / NLB → Deregistration Delay
-- When used:
-  - Instance deregistered
-  - Instance marked unhealthy
-- Behavior:
-  - ❌ No new connections sent to draining instance
-  - ✅ Existing connections allowed to complete
-- Timer:
-  - Range: 1–3600 seconds
-  - Default: 300s (5 min)
-  - 0 = disabled (immediate drop)
-- Tuning:
-  - ⏱ Short requests → low value (e.g. 30s)
-  - 📦 Long uploads / long-lived connections → high value
-  - Settings on targetGroup level
-- Trade-off:
-  - Higher value = graceful shutdown but slower scale-in
-- 🧠 Exam tip:
-  - Ensures zero-downtime deployments & safe instance replacement
+### Deployment
+- **Serverless** or **Node-based cluster**
+- Cluster mode:
+- Disabled = 1 shard + replicas
+- Enabled = multiple shards
+- Runs in **VPC** (subnet groups)
+- Supports **Outposts**
+
+
+### Security ⭐
+- **IAM auth**: Redis only (API-level)
+- **Redis AUTH**: password / auth token
+- **SSL in-transit encryption**
+- **Memcached**: SASL authentication
+
+
+### Cache Loading Patterns ⭐
+- **Lazy Loading**: read → cache on miss (stale possible)
+- **Write Through**: write DB + cache (no stale)
+- **Session Store**: TTL-based expiration
+
+
+### Redis Special Use Case ⭐
+- **Gaming Leaderboards**
+- Uses **Sorted Sets**
+- Real-time ranking
+- Uniqueness + ordering
+
+
+### Exam Tips ⭐
+- Redis = HA, durability, advanced features
+- Memcached = simple, fast, no HA
+- Sorted Sets = leaderboard questions
+- Cache invalidation = hardest problem
+
 
 ---
-## Auto Scaling Group (ASG)
-- ⚡ Purpose: auto scale EC2 instances based on load  
-  - Scale out → add instances (↑ load)  
-  - Scale in → remove instances (↓ load)  
-- 🔢 Capacity settings:  
-  - Min size → minimum instances  
-  - Desired → target instances  
-  - Max size → maximum instances  
-- 🧩 Works with Load Balancer:  
-  - Instances auto registered to target group  
-  - Health checks from ELB → terminate unhealthy instances  
-- 📦 Launch template (required):  
-  - AMI, instance type, EBS, security group, IAM role  
-  - User data scripts, network/subnet info  
-- 🕹 Scaling policies:  
-  - Triggered via CloudWatch alarms (CPU, custom metrics)  
-  - Scale out policy → add instances  
-  - Scale in policy → remove instances  
-- 🔄 Behavior:  
-  - ASG ensures desired capacity  
-  - Automatic replacement of unhealthy instances  
-- 🏗 Exam tips:  
-  - Free service, pay only for underlying EC2  
-  - Always pair with ELB for traffic distribution & health checks  
-  - Min/Max/Desired + scaling policies = core ASG logic  
 
----
-## Auto Scaling Policies
+## Common Network & Database Ports
 
-- ⚡ Purpose: control ASG scaling behavior  
-- 🏷 Types:  
-  1. **Dynamic Scaling**  
-     - **Target Tracking**: maintain a metric at target (e.g., CPU 40%)  
-     - **Step / Simple Scaling**: CloudWatch alarm → add/remove instances in steps  
-  2. **Scheduled Scaling**  
-     - Predefined scaling actions based on known patterns or events  
-  3. **Predictive Scaling**  
-     - Forecast load using historical data → schedule scaling ahead of time  
-- 📊 Common metrics to scale on:  
-  - CPU utilization (average)  
-  - RequestCountPerTarget (ALB)  
-  - Network in/out (for network-bound apps)  
-  - Custom CloudWatch metrics  
-- ⏱ Scaling cooldown:  
-  - Default 300s (5 min)  
-  - Prevents immediate repeated scaling actions  
-  - Reduce cooldown with pre-baked AMIs for faster instance readiness  
-- 🔄 Target Tracking Example:  
-  - Track avg CPU 40% → scale out/in automatically  
-  - CloudWatch creates AlarmHigh (scale out) & AlarmLow (scale in)  
-- 🧠 Exam tips:  
-  - Use target tracking for automatic metric-based scaling  
-  - Step/simple scaling for custom CloudWatch alarms  
-  - Scheduled for predictable traffic spikes  
-  - Predictive for cyclical patterns using ML forecasts  
-  - Enable detailed monitoring for 1-min metrics for faster scaling response  
+
+## Common Network & Database Ports (AWS SAA)
+
+```md
+### Important / General Ports ⭐
+- **FTP**: 21
+- **SSH**: 22
+- **SFTP**: 22 (over SSH)
+- **HTTP**: 80
+- **HTTPS**: 443 ⭐ (most important)
+
+### RDS / Database Ports ⭐
+- **PostgreSQL**: 5432
+- **MySQL**: 3306
+- **MariaDB**: 3306 (same as MySQL)
+- **Oracle RDS**: 1521
+- **Microsoft SQL Server**: 1433
+- **Amazon Aurora**:
+  - PostgreSQL-compatible: 5432
+  - MySQL-compatible: 3306
+
+### Exam Tips ⭐
+- Do **not memorize all ports**
+- Be able to **recognize service vs database ports**
+- **HTTPS (443)** is the most commonly referenced
+- Database ports often appear in **Security Group questions**
+```
