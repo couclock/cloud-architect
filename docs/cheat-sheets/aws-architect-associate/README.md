@@ -24,6 +24,7 @@
    - [Instance storage](section-2.3.md)
 - Section 3 - [High Availability & Scalability: ELB & ASG](section-3.md)
 - Section 4 - [AWS Fundamentals: RDS, Aurora and ElastiCache](section-4.md)
+- Section 5 - [Route 53](section-5.md)
 
 
 3. [Section 2 – Networking & VPC](#-section-2--networking--vpc)
