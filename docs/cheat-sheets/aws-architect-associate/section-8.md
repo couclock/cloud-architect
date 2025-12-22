@@ -177,3 +177,28 @@ Security → Geographic Restrictions → Countries → Edit
 - Need **global performance** → Price Class All
 - Need **cost optimization** → Price Class 100 / 200
 - Price classes do **not** change availability of CloudFront, only which edge locations serve content
+
+---
+## Cache Invalidations
+
+### Purpose
+- Force CloudFront to refresh cached content before TTL expires
+- Ensure users instantly receive updated files
+
+### How It Works
+1. Origin content changes (e.g., S3 update)
+2. Edge still holds cached version
+3. Create invalidation request
+4. Cache entry removed → next request fetches fresh content
+
+### Common Patterns
+- All files: `/*`
+- Single file: `/index.html`
+- Folder: `/images/*`
+
+### Cost & Tips
+- First ~1,000 paths/month usually free; then billed
+- Prefer versioned files + proper cache headers to reduce invalidations
+
+### Key Takeaway
+Use invalidations when you **can’t wait for cache TTL**, especially for critical updates.
