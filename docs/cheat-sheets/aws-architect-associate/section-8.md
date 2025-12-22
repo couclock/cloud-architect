@@ -202,3 +202,53 @@ Security → Geographic Restrictions → Countries → Edit
 
 ### Key Takeaway
 Use invalidations when you **can’t wait for cache TTL**, especially for critical updates.
+
+---
+## AWS Global Accelerator
+
+### 🌐 What it is
+- Global performance accelerator using AWS backbone
+- **Anycast** → 2 global **static IPs** route to nearest edge
+- Supports **TCP/UDP**, no caching, traffic proxied to origin
+
+### ⚡ Key Benefits
+- Lower latency, fewer internet hops
+- Consistent performance + intelligent routing
+- Fast failover (<1 min) via regional health checks
+- Strong DR + multi-region support
+
+### 🧩 Works With
+- ALB / NLB
+- EC2
+- Elastic IPs
+- Public or private endpoints
+
+### 🛡️ Security
+- Only 2 IPs to whitelist
+- AWS Shield DDoS protection
+- Stable IPs → no client caching issues
+
+### 🛠️ Features / Config
+- Listeners (ports/protocols)
+- Regional Endpoint Groups
+- Traffic weighting
+- Health checks (HTTP/HTTPS/TCP)
+- Optional client affinity (source IP)
+
+### 🧭 Use Cases
+- Non-HTTP apps: Gaming, VoIP, IoT
+- HTTP apps needing static global IP
+- Low latency + deterministic routing
+- Rapid regional failover needs
+
+### 🔍 Global Accelerator vs CloudFront
+- **Both:** AWS edge + Shield
+- **CloudFront:** CDN, caching, HTTP(S), content served from edges
+- **Global Accelerator:** no cache, accelerates TCP/UDP, routes to regional apps
+
+### 📌 Exam Tips
+- Uses **Anycast** + 2 static global IPs
+- Improves multi-region app performance
+- Automatic health-based failover
+- Prefer Global Accelerator for dynamic/non-HTTP workloads vs CloudFront
+
