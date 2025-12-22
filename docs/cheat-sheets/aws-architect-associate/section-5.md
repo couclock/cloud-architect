@@ -1,10 +1,10 @@
 # Route 53
 
 
-- 54.78.199.141 => eu-west-1
-- 54.242.236.184 => us-east-1
-- 47.129.248.205 => ap-southeast-1
-- ALB: training-ALB-766879361.eu-west-1.elb.amazonaws.com
+- 54.217.153.33 => eu-west-1
+- 98.93.37.116 => us-east-1
+- 18.143.153.17 => ap-southeast-1
+- ALB: training-ALB-808171759.eu-west-1.elb.amazonaws.com
 
 Prompt to use:
 
@@ -42,12 +42,12 @@ Here’s the transcript:
   - NS → name servers for zone
 
 • 🔁 Resolution Process (Recursive Lookup)  
-  1\) Client → Local DNS (ISP/company)  
-  2\) Local DNS → Root  
-  3\) Root → TLD NS (.com)  
-  4\) TLD NS → Domain NS (example.com)  
-  5\) Domain NS → returns record (e.g., A → 9.10.11.12)  
-  6\) Cache result (TTL) ➜ faster next time
+  1) Client → Local DNS (ISP/company)  
+  2) Local DNS → Root  
+  3) Root → TLD NS (.com)  
+  4) TLD NS → Domain NS (example.com)  
+  5) Domain NS → returns record (e.g., A → 9.10.11.12)  
+  6) Cache result (TTL) ➜ faster next time
 
 • 🧠 Exam Tips  
   - DNS = hierarchical, distributed, cached  
@@ -308,3 +308,233 @@ Exam Tips 📝:
 - Private resource → **CloudWatch Alarm required**
 - SG must allow Route 53 health checker IP ranges
 - Health checks ≠ ELB target health checks
+
+---
+
+## Routing Policies: Failover & Geolocation
+
+### Failover Routing Policy 🔁
+- Purpose: **Active/Passive disaster recovery**
+- Exactly **1 Primary + 1 Secondary**
+- **Primary MUST have a health check**
+- Secondary health check: optional
+- DNS response:
+  - Primary if healthy
+  - Secondary if primary unhealthy
+- Low TTL recommended (e.g. **60s**)
+- Client failover handled automatically by Route 53
+
+### Failover Exam Tips 📝
+- Health check mandatory on primary
+- Only **two records max**
+- Common with EC2, ALB, multi-region DR
+
+### Geolocation Routing Policy 🌍
+- Routes based on **user geographic location**
+- Match order (most specific first):
+  - Country → US State → Continent
+- **Default record REQUIRED**
+- Use cases:
+  - Website localization
+  - Content restriction
+  - Compliance requirements
+- Supports health checks per record
+
+### Geolocation Examples 📍
+- Asia → ap-southeast-1
+- United States → us-east-1
+- Default → eu-central-1
+
+### Geolocation Exam Tips 📝
+- Based on **user location**, not latency
+- Missing default = routing failure
+- Can combine with health checks
+
+### Common Pitfalls ⚠️
+- Security Groups blocking health checks → timeouts
+- Health checks originate from **public Route 53 IPs**
+- Geolocation ≠ Latency-based routing
+
+---
+## Geoproximity Routing Policy
+### Geoproximity Routing 🌐
+- Routes traffic based on **user + resource geographic location**
+- Uses **bias** to shift traffic between resources
+- Requires **Route 53 Traffic Flow (advanced feature)**
+
+### Bias Concept 🎚️
+- Bias = traffic weight adjustment by geography
+- **Positive bias (+)** → expand region → more traffic
+- **Negative bias (−)** → shrink region → less traffic
+- Bias changes the “geographic boundary” between resources
+
+### How Routing Works 📍
+- Bias = 0 on all resources
+  - Users routed to **closest region**
+- Higher bias on a resource
+  - Boundary shifts → **more users routed there**
+
+### Supported Resource Types 🧱
+- **AWS resources**
+  - Specify AWS Region (location auto-known)
+- **Non-AWS / on-prem**
+  - Must specify **latitude & longitude**
+
+### Common Use Cases 💡
+- Gradually **shift traffic to another region**
+- Handle regional capacity differences
+- Traffic steering during migrations
+
+### Exam Tips 📝
+- Geoproximity ≠ Geolocation
+- Geoproximity uses **bias**
+- Requires **Traffic Flow**
+- Designed for **traffic shifting**, not strict localization
+
+---
+## IP-based Routing Policy
+### IP-based Routing 🌐
+- Routes traffic based on **client source IP**
+- Uses **CIDR blocks** (IP ranges)
+- Match client IP → return specific DNS record
+
+### How It Works ⚙️
+- Define **locations** with CIDR ranges
+- Associate each CIDR with a record value (IP / endpoint)
+- Client IP ∈ CIDR → routed to mapped resource
+
+### Use Cases 💡
+- Performance optimization (known client networks)
+- Reduce network / data transfer costs
+- ISP-specific or corporate network routing
+
+### Example 🧭
+- CIDR 203.x.x.x → 1.2.3.4 (EC2 #1)
+- CIDR 200.x.x.x → 5.6.7.8 (EC2 #2)
+- Client IP determines DNS response
+
+### Exam Tips 📝
+- Based on **client IP**, not geography
+- Requires knowing client **CIDR ranges**
+- Simple, deterministic routing
+- IP-based ≠ Geolocation ≠ Geoproximity
+
+---
+## Multi-Value Routing Policy
+
+### Multi-Value Routing 🔀
+- Returns **multiple DNS records** for one name
+- Up to **8 healthy records** per DNS query
+- Designed for **client-side load balancing**
+
+### Health Checks ❤️
+- Can associate **health checks per record**
+- Only **healthy records** are returned
+- Unhealthy endpoints are automatically excluded
+
+### How It Works ⚙️
+- Multiple A/AAAA records for same name
+- Client receives several IPs
+- Client chooses which endpoint to use
+
+### vs Simple Routing ⚖️
+- Simple routing:
+  - Multiple values allowed
+  - ❌ No health checks
+  - May return unhealthy endpoints
+- Multi-Value routing:
+  - ✅ Health check support
+  - Safer client-side balancing
+
+### What It Is NOT 🚫
+- ❌ Not a replacement for **ELB**
+- ❌ No server-side load balancing
+- No advanced features (stickiness, scaling)
+
+### Common Use Cases 💡
+- Basic load balancing without ELB
+- Improve availability with health checks
+- Lightweight multi-endpoint setups
+
+### Exam Tips 📝
+- Max **8 healthy records** returned
+- Client performs load balancing
+- Health checks are key differentiator
+- Multi-Value ≠ ELB ≠ Simple routing
+
+---
+## Domain Registrar vs DNS Service
+
+### Domain Registrar 🌐
+- Service to **purchase domain names**
+- Annual cost
+- Examples:
+  - Amazon Registrar
+  - GoDaddy
+  - Google Domains
+- Usually provides **basic DNS**, but optional
+
+### DNS Service 🧭
+- Manages **DNS records** (A, AAAA, CNAME, etc.)
+- Example: **Amazon Route 53**
+- Uses **Hosted Zones** to manage records
+
+### Key Distinction ⚠️
+- Registrar ≠ DNS Service
+- You can mix providers freely:
+  - Domain from GoDaddy + DNS in Route 53
+  - Domain from Amazon Registrar + DNS elsewhere
+
+### Using Route 53 with Third-Party Registrar 🔗
+- Create **Public Hosted Zone** in Route 53
+- Get Route 53 **Name Servers (NS)**
+- Update **NS records** at registrar
+- Registrar → points to Route 53 name servers
+- Route 53 now handles all DNS queries
+
+### Exam Tips 📝
+- Route 53 can be **DNS-only**
+- Domain does NOT need to be registered in AWS
+- Always update **NS records** at registrar
+- Public hosted zone = internet-facing DNS
+
+---
+## Route 53 Resolver (Hybrid DNS)
+
+### Route 53 Resolver 🧭
+- Default DNS resolver in AWS
+- Resolves:
+  - EC2 local hostnames
+  - **Private Hosted Zones**
+  - **Public Hosted Zones**
+- Works automatically inside an AWS account
+
+### Hybrid DNS Concept 🔗
+- Hybrid DNS = AWS ↔ On-Prem DNS resolution
+- Requires **network connectivity**:
+  - Site-to-Site VPN or Direct Connect
+
+### Resolver Inbound Endpoint ⬅️
+- Purpose: **On-prem → AWS DNS**
+- Allows on-prem DNS servers to:
+  - Resolve **private hosted zone** records in AWS
+- On-prem resolver forwards queries → inbound endpoint
+
+### Resolver Outbound Endpoint ➡️
+- Purpose: **AWS → On-prem DNS**
+- EC2 / AWS services query:
+  - On-prem domain names
+- Route 53 Resolver forwards queries → on-prem DNS
+
+### Common Architecture 🏗️
+- On-prem ↔ AWS connected
+- Inbound endpoint: on-prem → AWS
+- Outbound endpoint: AWS → on-prem
+- Enables **bi-directional DNS resolution**
+
+### Exam Tips 📝
+- Resolver endpoints = **hybrid DNS**
+- Inbound = queries **into AWS**
+- Outbound = queries **out of AWS**
+- Requires VPN or Direct Connect
+- Used with **Private Hosted Zones**

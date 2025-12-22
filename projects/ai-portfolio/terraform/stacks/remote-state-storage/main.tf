@@ -2,29 +2,17 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-resource "aws_kms_key" "mykey" {
-  description = "KMS key to encrypt Terraform states"
-}
-
 # #################################################
 # S3 bucket used to store state remotely
 resource "aws_s3_bucket" "terraform_state_s3_bucket" {
   bucket = "tf-states-cloud-arch-ai-portfolio"
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
   tags = {
     Name = "Terraform State File Storage"
-  }
-}
-
-resource "aws_s3_bucket_versioning" "terraform_state" {
-  bucket = aws_s3_bucket.terraform_state_s3_bucket.id
-
-  versioning_configuration {
-    status = "Enabled"
   }
 }
 
@@ -33,8 +21,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "terraform_state" 
 
   rule {
     apply_server_side_encryption_by_default {
-      kms_master_key_id = aws_kms_key.mykey.arn
-      sse_algorithm     = "aws:kms"
+      sse_algorithm = "AES256"
     }
   }
 }
