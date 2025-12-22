@@ -104,4 +104,35 @@ Please summarize the following transcript into a very compact AWS Solutions Arch
 - Legacy method still valid knowledge, but **not preferred**
 - VPC Origins = newer, safer, simpler
 
+---
+## Geo Restriction
+
+### 🌍 Purpose
+- Control **who can access your CloudFront distribution** based on country
+- Enforce legal, licensing, and compliance restrictions
+
+### 🚦 Modes
+- **Allowlist** → Only selected countries can access
+- **Blocklist** → Selected countries are blocked
+
+### 🧠 How It Works
+- Uses **third-party Geo-IP database**
+- Matches user’s IP → determines country
+
+### 🏷️ Common Use Cases
+- Copyright & licensing control
+- Regional content restrictions
+- Compliance requirements
+
+### ⚙️ Configuration (Console)
+Security → Geographic Restrictions → Countries → Edit
+- Choose:
+  - Allowlist → specify allowed countries
+  - Blocklist → specify banned countries
+- Save → applied to the distribution
+
+### 🧠 Exam Tips
+- Country detection = **Geo-IP lookup**
+- Works only at **country level**, not city / region
+- Simple allowlist / blocklist model
 
