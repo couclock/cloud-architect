@@ -1,6 +1,8 @@
 # Cloud Front & AWS Global Accelerator
 
+Prompt to use:
 
+Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet. Include a second-level Markdown title (##) at the top using the section’s main topic. Format the rest in raw Markdown inside a code block, with no separators. Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices. Use simple icons when relevant, but keep them limited. Keep the cheat sheet extremely concise and easy to memorize. Here’s the transcript:
 
 ## **CloudFront (CDN)**
 
