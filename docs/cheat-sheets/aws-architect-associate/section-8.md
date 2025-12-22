@@ -65,3 +65,43 @@ Please summarize the following transcript into a very compact AWS Solutions Arch
 - Edge locations \= global caching \+ DDoS protection  
 - OAC secures S3 origins  
 - Distinguish **caching (CloudFront)** vs **replication (S3 CRR)**
+
+---
+## Connecting to ALB / EC2 Origins
+
+### 🎯 Goal
+- Use CloudFront in front of **applications running on ALB, NLB, or EC2**
+- Improve security + latency
+- Prefer **private VPC origins** over old public edge-IP allowlisting method
+
+### 🆕 Best Practice: VPC Origins
+- Deliver content from **private subnets**
+- Keep backend **fully private** (no internet exposure)
+- Works with:
+  - Application Load Balancer
+  - Network Load Balancer
+  - EC2 instances
+- CloudFront → VPC Origin → Private Backend
+- Most secure architecture
+
+### 🔐 Security Advantages
+- Backend stays private
+- No need to manage IP allow lists
+- No Internet-facing ALB/EC2 required
+- Cleaner + safer network path
+
+### 🏛️ Legacy Method (Public Network – Old Way)
+- Backend must be **public**
+- Allow only CloudFront edge IPs in Security Groups
+- Requires:
+  - Fetching CloudFront IP ranges list
+  - Updating SG rules when IPs change
+- Risks:
+  - Misconfiguration can expose app publicly
+
+### 🧠 Exam / Real-World Tips
+- If you see **secure, private CloudFront → backend** → think **VPC Origins**
+- Legacy method still valid knowledge, but **not preferred**
+- VPC Origins = newer, safer, simpler
+
+
