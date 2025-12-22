@@ -136,3 +136,44 @@ Security → Geographic Restrictions → Countries → Edit
 - Works only at **country level**, not city / region
 - Simple allowlist / blocklist model
 
+---
+## Pricing & Price Classes
+
+### 💰 Why Pricing Matters
+- CloudFront has edge locations worldwide
+- **Cost per GB varies by region**
+- Some regions (e.g., India) are significantly more expensive than others (e.g., US / Europe)
+
+### 📉 Pricing Behavior
+- Different geographic zones = different price per GB
+- More data transfer → cheaper per GB (volume discounts)
+- High-cost regions drive overall distribution cost up
+
+### 🏷️ Price Classes Overview
+- Control which edge locations CloudFront can use
+- Trade-off: **Cost vs Performance**
+- 3 available classes:
+
+### 🎯 Price Class Options
+- **Price Class All**
+  - Uses *all* CloudFront regions
+  - Best performance (global coverage)
+  - Highest cost
+- **Price Class 200**
+  - Uses most regions
+  - Excludes the most expensive
+  - Balanced cost vs performance
+- **Price Class 100**
+  - Uses only the least expensive regions
+  - Typically North America + Europe
+  - Lowest cost, reduced global performance
+
+### 🌍 Visual Way to Think About It
+- Price Class 100 → North America + Europe
+- Price Class 200 → Adds more global regions
+- Price Class All → Worldwide edges
+
+### 🧠 Exam & Real-World Tips
+- Need **global performance** → Price Class All
+- Need **cost optimization** → Price Class 100 / 200
+- Price classes do **not** change availability of CloudFront, only which edge locations serve content
