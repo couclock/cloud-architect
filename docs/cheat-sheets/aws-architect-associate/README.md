@@ -31,5 +31,7 @@
   - [Advanced](section-7.2.md)
   - [Security](section-7.3.md)
 - Section 8 - [Cloud Front & AWS Global Accelerator](section-8.md)
+- Section 9 - [AWS Storage Extra](section-9.md)
+- Section 10 - [Decoupling applications: SQS, SNS, Kinesis & ActiveMQ](section-10.md)
 
 
