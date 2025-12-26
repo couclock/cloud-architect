@@ -1,4 +1,4 @@
-# AWS Storage Extra
+# Decoupling applications: SQS, SNS, Kinesis & ActiveMQ
 
 Prompt to use:
 
