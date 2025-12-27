@@ -33,5 +33,7 @@
 - Section 8 - [Cloud Front & AWS Global Accelerator](section-8.md)
 - Section 9 - [AWS Storage Extra](section-9.md)
 - Section 10 - [Decoupling applications: SQS, SNS, Kinesis & ActiveMQ](section-10.md)
+- Section 11 - [Containers: ECS, Fargate, ECR & EKS](section-11.md)
+- Section 12 - [Serverless: Lambda, API Gateway, Cognito, DynamoDB](section-12.md)
 
 
