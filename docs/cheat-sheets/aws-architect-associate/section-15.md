@@ -2,338 +2,375 @@
 # Data & Analytics
 
 - [Data \& Analytics](#data--analytics)
-  - [Overview](#overview)
-  - [Amazon RDS](#amazon-rds)
-  - [Amazon ElastiCache](#amazon-elasticache)
-  - [Amazon DynamoDB](#amazon-dynamodb)
-  - [Amazon S3 (DB View)](#amazon-s3-db-view)
-  - [Amazon DocumentDB](#amazon-documentdb)
-  - [Amazon Keyspaces](#amazon-keyspaces)
-  - [Amazon Timestream](#amazon-timestream)
+  - [Amazon Athena](#amazon-athena)
+  - [Amazon Redshift](#amazon-redshift)
+  - [Amazon OpenSearch Service](#amazon-opensearch-service)
+  - [Amazon EMR](#amazon-emr)
+  - [Amazon QuickSight](#amazon-quicksight)
+  - [AWS Lake Formation](#aws-lake-formation)
+  - [Amazon Managed Service for Apache Flink](#amazon-managed-service-for-apache-flink)
+  - [Amazon MSK (Managed Streaming for Apache Kafka)](#amazon-msk-managed-streaming-for-apache-kafka)
+  - [Serverless Big Data Ingestion Pipeline](#serverless-big-data-ingestion-pipeline)
 
-## Overview
+## Amazon Athena
 
-### Selection Clues 🎯
-- SQL + joins → Relational
-- Scale + low latency → NoSQL
-- Analytics → OLAP
-- Search / relationships / time → Specialized DB
+### What It Is
+- 🟢 **Serverless SQL** queries on **S3**
+- Built on **Presto**
+- No servers, no data movement
 
-### Relational (OLTP)
-- **RDS**: Managed SQL engines
-- **Aurora**: Cloud-native, high performance
-- Use: transactions, strong schema, joins
+### Data & Cost
+- Formats: CSV, JSON, **Parquet**, **ORC**
+- 💰 Pay **per TB scanned**
+- ⭐ Use **Parquet/ORC** to reduce cost
 
-### NoSQL
-- **DynamoDB**: Key-value, serverless scale
-- **ElastiCache**: In-memory cache
-- **DocumentDB**: JSON docs
-- **Keyspaces**: Cassandra
-- Use: flexible schema, no joins
+### Use Cases
+- Ad-hoc queries, BI, analytics
+- Log analysis (VPC, ALB, CloudTrail)
+- Dashboards via **QuickSight**
 
-### Object Storage
-- **S3**: Objects, files
-- **Glacier**: Archives
+### Performance (Exam Key)
+- **Columnar formats** (Parquet/ORC)
+- **Partition S3 paths** (`/year=/month=/day=`)
+- **Compress data**
+- **Large files** (≥128 MB)
+- ETL & conversion with **AWS Glue**
 
-### Analytics (OLAP)
-- **Redshift**: Data warehouse
-- **Athena**: SQL on S3
-- **EMR**: Big data processing
+### Federated Query
+- SQL across **S3 + other sources**
+- Uses **Lambda connectors**
+- Sources: DynamoDB, RDS, Aurora, Redshift, CloudWatch, on-prem
+- Results → **S3**
 
-### Specialized
-- **OpenSearch**: Full-text search
-- **Neptune**: Graph relationships
-- **QLDB**: Immutable ledger
-- **Timestream**: Time-series data
-
-### Exam Tips 💡
-- Joins? → RDS/Aurora  
-- Massive scale? → DynamoDB  
-- BI/Reporting? → Redshift  
-- Search ≠ DB → OpenSearch  
-- Files ≠ DB → S3
+### Exam Tip 🎯
+- *Serverless SQL on S3* → **Athena**
 
 ---
-## Amazon RDS
+## Amazon Redshift
 
-### Core
-- Managed **Relational DB (OLTP)**
-- Engines: MySQL, PostgreSQL, MariaDB, Oracle, SQL Server, DB2
-- **Provisioned**: instance type + EBS (storage auto-scales)
+### What It Is
+- 🟢 **OLAP data warehouse** (PostgreSQL-based)
+- Analytics, BI, aggregations (not OLTP)
+- **Columnar storage + parallel queries**
+- Scales to **petabytes**
 
-### Scaling & Availability
-- **Read Replicas** 📖: scale reads, analytics, async
-- **Multi-AZ** 🛡️: HA + failover only (no reads)
-
-### Security
-- **Auth**: username/password, **IAM auth** (some engines)
-- **Network**: Security Groups
-- **Encryption**: KMS (at rest), SSL/TLS (in transit)
-- **RDS Proxy**: IAM auth + Secrets Manager integration
-
-### Backups
-- **Automated backups**: up to 35 days → **PITR**
-- **Manual snapshots**: long-term retention
-- Restore = **new DB instance**
-
-### Operations
-- Managed maintenance & patching (downtime possible)
-- No OS access (except **RDS Custom**)
-
-### RDS Custom
-- OS / DB access
-- Supported: **Oracle, SQL Server**
-
-### Use Cases 🎯
-- SQL queries, joins, transactions
-- Traditional relational workloads
-
-### Exam Tips 💡
-- HA ≠ scaling → Multi-AZ
-- Reads scaling → Read Replicas
-- Analytics on prod DB → Read Replica
-- Need OS access → RDS Custom
-
----
-## Amazon ElastiCache
-
-### Core
-- Managed **in-memory cache**
-- Engines: **Redis**, **Memcached**
-- **Sub-ms latency** ⚡
-- Must **provision instance type**
-
-### Redis Features
-- **Clustering & sharding**
-- **Read Replicas**
-- **Multi-AZ**
-- **Redis AUTH**
-- Backups, snapshots, **PITR**
-
-### Security
-- **Security Groups**
-- **IAM** (service integration)
-- **KMS** encryption at rest
-
-### Operations
-- Managed patching & maintenance
-- No SQL support ❌
-
-### Use Cases 🎯
-- Cache DB queries (reduce RDS load)
-- Key/Value access
-- User **session storage**
-
-### Exam-Critical Rule 🚨
-- **App code change required**
-- If caching **without code change** → ❌ ElastiCache
-
-### Exam Tips 💡
-- RDS + cache → ElastiCache
-- Fast reads, transient data → Redis
-- SQL queries needed → not ElastiCache
-
----
-## Amazon DynamoDB
-
-### Core
-- **Serverless NoSQL (key-value)**
-- **Single-digit ms latency**
-- Fully **managed & multi-AZ**
-- Flexible schema
-
-### Capacity Modes
-- **Provisioned** (+ auto scaling): predictable traffic
-- **On-Demand** ⚡: unpredictable / spiky traffic
-
-### Features
-- **Transactions** supported
-- **TTL**: auto-expire items
-- **DAX** 🚀: in-memory cache → **microsecond reads**
-- Reads & writes fully decoupled
-
-### Security
-- **IAM-only** auth & authorization
-
-### Integrations
-- **DynamoDB Streams** → Lambda (per-item change)
-- **Kinesis Data Streams** → Firehose, long retention (≤1 year)
-
-### Global & HA
-- **Global Tables** 🌍: active-active, multi-region writes
-
-### Backups
-- **PITR**: up to **35 days** → new table
-- **On-demand backups**: long-term
-- **Export/Import S3**: no RCUs/WCUs used
-
-### Use Cases 🎯
-- Serverless apps
-- Key/Value access
-- Session storage (TTL)
-- Rapid schema evolution
-- Distributed cache alternative
-
-### Exam Tips 💡
-- Spiky traffic → On-Demand
-- Microsecond reads → DAX
-- Multi-region active-active → Global Tables
-- No SQL / joins → DynamoDB
-- Small items (< few 100 KB) → DynamoDB
-
----
-## Amazon S3 (DB View)
-
-### Core
-- **Object (key-value) storage**
-- **Serverless, infinite scale**
-- Max object: **5 TB**
-- Best for **large objects** (not many small ones)
-
-### Storage Classes
-- **Standard**, **Intelligent-Tiering**
-- **Infrequent Access**
-- **Glacier** (archive)
-- **Lifecycle rules** → tier transitions
-
-### Key Features
-- **Versioning**
-- **Replication** (CRR / SRR)
-- **MFA Delete**
-- **Access Logs**
-- **Object Lock / Glacier Vault Lock** (WORM)
-
-### Security
-- **IAM**, **Bucket Policies**
-- **ACLs**, **Access Points**
-- **CORS**
-- **Object Lambda** (modify objects on read)
-
-### Encryption
-- **SSE-S3**
-- **SSE-KMS** 🔐
-- **SSE-C**
-- **Client-side encryption**
-- **TLS in transit**
-- Default encryption supported
-
-### Performance
-- **Multipart Upload**
-- **Transfer Acceleration**
-- **S3 Select** (query partial data)
-
-### Automation
-- **Event Notifications** → SNS, SQS, Lambda, EventBridge
-- **S3 Batch Operations**
-- **S3 Inventory**
-
-### Use Cases 🎯
-- Static assets, backups, data lakes
-- Large binary objects
-- Website hosting
-
-### Exam Tips 💡
-- Not a relational DB ❌
-- Big objects → S3
-- Archive + compliance → Glacier + Object Lock
-- Encrypt existing objects → Batch Ops
-- Event-driven workflows → S3 Events
-
----
-## Amazon DocumentDB
-
-### Core
-- **NoSQL document database**
-- **MongoDB-compatible API**
-- JSON documents (query & index)
+### Deployment Modes
+- **Provisioned**: choose node types, RI savings
+- **Serverless**: no cluster/node management
 
 ### Architecture
-- Fully **managed**
-- **Highly available**
-- Data replicated across **3 AZs**
-- Storage **auto-scales** (+10 GB increments)
-- Designed for **millions of req/s**
+- **Leader node**: query planning, result aggregation
+- **Compute nodes**: execute queries
+- SQL interface, BI tools (QuickSight, Tableau)
 
-### Positioning
-- “**Aurora for MongoDB**”
-- Similar deployment model to Aurora
+### Redshift vs Athena (Exam)
+- **Redshift**: faster joins/aggregations, indexed, managed cluster
+- **Athena**: serverless, data stays in S3
+- 👉 Heavy analytics, frequent queries → **Redshift**
 
-### Use Cases 🎯
-- MongoDB workloads
-- Document / JSON-based apps
-- Flexible schema, NoSQL access
+### Snapshots & DR
+- Single-AZ (default), **Multi-AZ available**
+- **Snapshots**: stored in S3, incremental
+- Automated (8h / 5GB) or manual
+- **Cross-region snapshot copy** → DR
 
-### Exam Tips 💡
-- MongoDB mentioned → **DocumentDB**
-- JSON documents + NoSQL → DocumentDB
-- Key-value only → DynamoDB
-- SQL / joins → RDS / Aurora
+### Data Ingestion
+- **COPY command from S3** (best practice)
+- **Kinesis Data Firehose** → S3 → Redshift
+- **JDBC insert** (batch only, never row-by-row)
+- **Enhanced VPC Routing** → private S3 traffic
 
----
-## Amazon Keyspaces
+### Redshift Spectrum
+- Query **S3 data without loading**
+- Requires Redshift cluster
+- Uses **thousands of Spectrum nodes**
+- Results returned to cluster
 
-### Core
-- **Managed Apache Cassandra**
-- **Serverless, fully managed**
-- NoSQL, wide-column store
-- Uses **CQL** (Cassandra Query Language)
-
-### Architecture
-- Auto-scales tables up/down
-- Data replicated **3× across AZs**
-- **Single-digit ms latency**
-- Thousands of req/s at scale
-
-### Capacity Modes
-- **On-Demand** ⚡: unpredictable traffic
-- **Provisioned + Auto Scaling**: steady traffic
-
-### Security & Backup
-- Encryption at rest
-- **PITR** up to **35 days**
-- Managed backups
-
-### Use Cases 🎯
-- IoT device data
-- Time-series workloads
-- Large-scale distributed NoSQL
-
-### Exam Tips 💡
-- Apache Cassandra → **Amazon Keyspaces**
-- Wide-column NoSQL → Keyspaces
-- SQL / joins needed → ❌
-- Similar scaling model to DynamoDB
+### Exam Tips 🎯
+- Columnar + OLAP → **Redshift**
+- Large batch loads → **COPY**
+- Query S3 with Redshift power → **Spectrum**
 
 ---
-## Amazon Timestream
+## Amazon OpenSearch Service
 
-### Core
-- **Serverless time-series DB**
-- Fully managed, fast, scalable
-- Stores **events with timestamps**
-- SQL-compatible
+### What It Is
+- 🟢 Managed **search & analytics** engine
+- Successor to **Amazon Elasticsearch**
+- Full-text, partial-field search (not key-based)
 
-### Architecture
-- Auto-scales for trillions of events/day
-- **Recent data** → in-memory
-- **Historical data** → cost-optimized storage
-- Time-series analytics functions built-in
+### When to Use
+- Add **search** to an app (complement DBs)
+- Log analytics & observability
+- Near real-time analytics
 
-### Integrations
-- Data sources: **AWS IoT**, **Kinesis**, **Prometheus**, **Telegraf**, **MSK**
-- Analytics & dashboards: **QuickSight**, **Grafana**, **SageMaker**, JDBC/SQL apps
+### Deployment Modes
+- **Managed cluster**: provisioned instances
+- **Serverless**: auto-scale, no ops
+
+### Queries & Visualization
+- Native **OpenSearch DSL** (not SQL)
+- SQL support via **plugin**
+- Dashboards via **OpenSearch Dashboards**
+
+### Data Ingestion
+- **Kinesis Data Firehose**
+- **CloudWatch Logs**
+- **IoT**
+- Custom apps (API)
+
+### Common Architectures (Exam)
+- **DynamoDB + OpenSearch**
+  - DynamoDB Streams → Lambda → OpenSearch
+  - Search in OpenSearch → fetch item from DynamoDB
+- **CloudWatch Logs → OpenSearch**
+  - Subscription Filter → Lambda (real-time)
+  - Subscription Filter → Firehose (near real-time)
+- **Kinesis → OpenSearch**
+  - Firehose (near real-time)
+  - Lambda consumer (real-time)
 
 ### Security
+- IAM & **Cognito** auth
 - Encryption **at rest & in transit**
 
-### Use Cases 🎯
-- IoT data
-- Operational monitoring
-- Real-time analytics
-- Any time-series dataset
+### Exam Tips 🎯
+- Need **full-text / partial search** → OpenSearch
+- Not a primary DB → use **with DynamoDB/RDS**
+- Logs + search + dashboards → OpenSearch
 
-### Exam Tips 💡
-- Time + value → **Timestream**
-- SQL-compatible → queries & dashboards
-- Use for trillions of events/day
-- Not for relational OLTP ❌
+---
+## Amazon EMR
+
+### What It Is
+- 🟢 **Big data processing** on AWS
+- Managed **Hadoop / Spark** clusters
+- Runs on **EC2** (provisioned)
+
+### When to Use
+- Massive data processing
+- ML, web indexing, analytics
+- Hadoop ecosystem workloads
+
+### Built-in Frameworks
+- Apache **Spark**
+- **Hadoop**
+- **HBase**
+- **Presto**
+- **Flink**
+
+### Cluster Node Types
+- **Master node**: cluster management (must run)
+- **Core nodes**: tasks + data storage (must run)
+- **Task nodes**: tasks only (optional)
+
+### Pricing & Instances (Exam)
+- **On-Demand**: predictable workloads
+- **Reserved Instances**: cost savings  
+  - Best for **Master + Core nodes**
+- **Spot Instances**: cheap, interruptible  
+  - Best for **Task nodes**
+
+### Scaling & Lifecycle
+- **Auto-scaling** supported
+- **Long-running clusters** → RI-friendly
+- **Transient clusters** → create, process, terminate
+
+### Exam Tips 🎯
+- Hadoop / Spark cluster → **EMR**
+- Big data tools without setup → **EMR**
+- Spot for compute-only → **Task nodes**
+
+---
+## Amazon QuickSight
+
+### What It Is
+- 🟢 **Serverless BI & dashboards**
+- ML-powered, auto-scaled
+- Per-session pricing
+- Embeddable in apps/websites
+
+### Use Cases
+- Business analytics & insights
+- Visual ad-hoc analysis
+- Reporting & dashboards
+
+### Data Sources (Exam)
+- AWS: **Athena**, **Redshift**, **RDS**, Aurora, **S3**
+- Analytics: OpenSearch, Timestream
+- SaaS: Salesforce, Jira
+- On-prem DBs (JDBC)
+- Files: CSV, Excel, JSON, TSV, logs
+
+### SPICE Engine ⭐
+- In-memory acceleration
+- Works **only when data is imported**
+- Not used with live DB connections
+
+### Dashboards vs Analysis
+- **Analysis**: editable, full exploration
+- **Dashboard**: read-only snapshot of analysis
+- Share with users / groups after publishing
+
+### Users & Security
+- QuickSight-local users (not IAM)
+- **Groups + CLS** (column-level security)
+  - Enterprise edition only
+
+### Common Exam Patterns 🎯
+- Athena → QuickSight (S3 analytics)
+- Redshift → QuickSight (data warehouse BI)
+- Need dashboards, not querying → **QuickSight**
+
+---
+## AWS Lake Formation
+
+### What It Is
+- 🟢 Fully managed **data lake** service
+- Central analytics data store on **Amazon S3**
+- Speeds setup (days vs months)
+
+### What It Does
+- Discover, ingest, cleanse, transform data
+- Automates cataloging & de-duplication
+- Uses **ML transforms**
+- Built on **AWS Glue** (abstracted)
+
+### Data Sources
+- Amazon **S3**
+- **RDS / Aurora**
+- On-prem SQL & NoSQL
+- Blueprints for easy ingestion
+
+### Key Feature ⭐ (Exam Favorite)
+- **Centralized fine-grained access control**
+  - **Row-level & column-level security**
+  - Single place to manage permissions
+
+### Architecture
+- Lake Formation layer on top of **Glue**
+- Data stored in **S3**
+- Glue provides crawlers, ETL, catalog
+- Security enforced by Lake Formation
+
+### Analytics Integrations
+- **Athena**
+- **Redshift**
+- **EMR**
+- Spark & other analytics tools
+
+### Why Use It (Exam)
+- Avoid managing security in:
+  - S3, Athena, QuickSight, RDS separately
+- One permission model for all analytics
+
+### Exam Tips 🎯
+- Central data lake + fine-grained security → **Lake Formation**
+- Multiple analytics tools, shared data → **Lake Formation**
+- Row/column access across services → **Lake Formation**
+
+---
+## Amazon Managed Service for Apache Flink
+
+### What It Is
+- 🟢 Managed **real-time stream processing**
+- Runs **Apache Flink** apps (Java, Scala, SQL)
+- Formerly **Kinesis Data Analytics for Flink**
+
+### When to Use
+- Real-time stream transformations
+- Stateful stream processing
+- Complex event processing
+
+### Data Sources
+- **Kinesis Data Streams**
+- **Amazon MSK (Kafka)**
+- ❌ **Not Firehose** (exam trap)
+
+### Key Features
+- Fully managed compute & scaling
+- Parallel processing
+- **Checkpoints & snapshots** (backups)
+- Flink dashboard for monitoring
+
+### Application Types
+- **Streaming applications** (Flink runtime)
+- **Studio notebooks** (interactive analysis)
+- Legacy **SQL apps** (Firehose-compatible)
+
+### Exam Tips 🎯
+- Real-time stream processing → **Flink**
+- Needs complex transformations → **Flink**
+- Kinesis Streams / Kafka input → **Flink**
+- Firehose input → ❌ Flink (use SQL legacy)
+
+---
+## Amazon MSK (Managed Streaming for Apache Kafka)
+
+### What It Is
+- 🟢 Fully managed **Apache Kafka** on AWS
+- Real-time **data streaming**
+- Handles **brokers + Zookeeper**
+- Deploy in **VPC**, multi-AZ (up to 3) for HA
+- Data stored on **EBS** indefinitely
+
+### Deployment Modes
+- **Provisioned**: manage brokers
+- **Serverless**: auto-scale compute & storage, no capacity management
+
+### Kafka Basics
+- **Producers** → Kafka **Topics** → **Consumers**
+- Topics replicated across brokers
+- Streams consumed for processing/storage (EMR, S3, SageMaker, RDS, Kinesis)
+
+### Comparison with Kinesis
+- Message size: 1 MB default (MSK configurable)
+- Shards (Kinesis) ↔ Partitions (Kafka)
+- Scaling: Kinesis (shard split/merge), MSK (add partitions only)
+- Encryption: in-flight TLS/plaintext, at-rest both
+- Retention: MSK unlimited (pay EBS)
+
+### Consumption Patterns
+- **Flink** app (Kinesis Data Analytics)
+- **Glue Streaming ETL**
+- **Lambda** event source
+- Custom **Kafka consumer** (EC2, ECS, EKS)
+
+### Exam Tips 🎯
+- Managed Kafka → **MSK**
+- Stream ingestion → **Producers → Topics → Consumers**
+- Flink reads from MSK for real-time analytics
+- Serverless MSK → auto-scaling without capacity planning
+
+---
+## Serverless Big Data Ingestion Pipeline
+
+### Overview
+- Real-time **data ingestion → transformation → query → visualization**
+- Fully serverless & AWS-managed
+
+### Pipeline Components
+- **IoT Core** → collects data from IoT devices
+- **Kinesis Data Streams** → real-time streaming
+- **Kinesis Data Firehose** → near real-time delivery to **S3**
+- **Lambda** → optional transformation / cleansing
+- **S3** → ingestion & reporting buckets
+- **SQS** → optional event queue for Lambda triggers
+- **Athena** → serverless SQL querying on S3
+- **QuickSight** → visualization dashboards
+- **Redshift** → data warehouse for analytics
+
+### Flow (Exam Key)
+1. IoT devices → **IoT Core**
+2. IoT Core → **Kinesis Data Stream**
+3. Stream → **Firehose** → **S3 ingestion bucket**
+4. Optional **Lambda** → transform data
+5. S3 → trigger **SQS/Lambda**
+6. Lambda → **Athena SQL** → **S3 reporting bucket**
+7. QuickSight / Redshift → dashboards & analytics
+
+### Exam Tips 🎯
+- Serverless pipeline → **IoT Core + Kinesis + Firehose + Lambda + Athena**
+- S3 for **raw + reporting data**
+- Visualization → **QuickSight**; analytics → **Redshift**
+- Use **Lambda** for real-time transformation
