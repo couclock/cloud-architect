@@ -35,5 +35,6 @@
 - Section 10 - [Decoupling applications: SQS, SNS, Kinesis & ActiveMQ](section-10.md)
 - Section 11 - [Containers: ECS, Fargate, ECR & EKS](section-11.md)
 - Section 12 - [Serverless: Lambda, API Gateway, Cognito, DynamoDB](section-12.md)
+- Section 13 - [Serverless solution architectures discussions](section-13.md)
 
 
