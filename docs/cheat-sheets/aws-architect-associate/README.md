@@ -37,6 +37,7 @@
 - Section 12 - [Serverless: Lambda, API Gateway, Cognito, DynamoDB](section-12.md)
 - Section 13 - [Serverless solution architectures discussions](section-13.md)
 - Section 14 - [Databases in AWS](section-14.md)
+- Section 15 - [Data & Analytics](section-15.md)
 
 ## Prompt to use
 

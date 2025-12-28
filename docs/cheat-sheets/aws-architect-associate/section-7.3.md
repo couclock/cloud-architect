@@ -90,7 +90,7 @@ Here’s the transcript:
 
 - Cross-Origin Resource Sharing  
 - Browser security feature  
-- Origin \= protocol \+ domain \+ port  
+- Origin = protocol + domain + port  
 - Same-origin only if ALL match
 
 ### 🌐 How It Works
@@ -106,7 +106,7 @@ Here’s the transcript:
 - Often GET / PUT / DELETE / POST  
 - `*` allows all origins (use carefully)
 
-### 📦 S3 \+ CORS (Exam\!)
+### 📦 S3 + CORS (Exam\!)
 
 - Needed for **S3 static website cross-bucket access**  
 - Configure in **S3 Permissions → CORS**  
@@ -115,9 +115,9 @@ Here’s the transcript:
 
 ### ⚠️ SAA Exam Tips
 
-- CORS \= **browser-side**, NOT IAM auth  
+- CORS = **browser-side**, NOT IAM auth  
 - Cross-origin → requires proper headers  
-- OPTIONS preflight \= normal behavior  
+- OPTIONS preflight = normal behavior  
 - Remember: **Access-Control-Allow-Origin is mandatory**
 
 ---
@@ -152,7 +152,7 @@ Here’s the transcript:
 - Protects against **accidental / malicious permanent deletion**  
 - Browser/console deletes still possible → only delete marker  
 - Permanent delete blocked unless MFA provided  
-- Root credentials \+ MFA device needed to configure
+- Root credentials + MFA device needed to configure
 
 ### 📝 Best Practices
 
@@ -167,7 +167,7 @@ Here’s the transcript:
 ### 📘 Purpose
 
 - Audit all S3 access requests  
-- Logs **allowed \+ denied** requests  
+- Logs **allowed + denied** requests  
 - Stored as objects in another S3 bucket  
 - Can analyze with Athena
 
@@ -185,7 +185,7 @@ Here’s the transcript:
 ### 🚫 Critical Warning (Exam\!)
 
 - ❗ Never log into the **same bucket**  
-- Causes infinite loop \+ massive cost
+- Causes infinite loop + massive cost
 
 ### 📝 Permissions
 
@@ -217,7 +217,7 @@ Here’s the transcript:
 - Generated via Console / CLI / SDK  
 - URL contains signed authorization  
 - Recipient inherits **permissions of creator**  
-- Supports GET (download) \+ PUT (upload)
+- Supports GET (download) + PUT (upload)
 
 ### ⏳ Expiration
 
@@ -275,9 +275,9 @@ Here’s the transcript:
 
 ### 🧠 Exam Tips
 
-- Glacier Vault Lock \= bucket-level, strict WORM  
-- S3 Object Lock \= object-level, retention \+ legal hold  
-- Compliance \= strict, Governance \= flexible  
+- Glacier Vault Lock = bucket-level, strict WORM  
+- S3 Object Lock = object-level, retention + legal hold  
+- Compliance = strict, Governance = flexible  
 - Legal Hold overrides retention period
 
 ---
@@ -302,8 +302,8 @@ Here’s the transcript:
 
 - AP can be **public (internet)** or **private (VPC origin)**  
 - Private access → create **VPC endpoint** in VPC  
-- VPC endpoint policy grants access to target AP \+ bucket  
-- Layered security: S3 bucket \+ access point \+ VPC endpoint
+- VPC endpoint policy grants access to target AP + bucket  
+- Layered security: S3 bucket + access point + VPC endpoint
 
 ### 🧩 Benefits
 
@@ -324,7 +324,7 @@ Here’s the transcript:
 
 ### 🔑 How It Works
 
-- Requires an **S3 Access Point** \+ **Lambda function**  
+- Requires an **S3 Access Point** + **Lambda function**  
 - Client accesses **Object Lambda Access Point**  
 - Lambda fetches object from original S3 bucket  
 - Lambda modifies object (redact/enrich/transform)  

@@ -1,7 +1,7 @@
 
-# Databases in AWS
+# Data & Analytics
 
-- [Databases in AWS](#databases-in-aws)
+- [Data \& Analytics](#data--analytics)
   - [Overview](#overview)
   - [Amazon RDS](#amazon-rds)
   - [Amazon ElastiCache](#amazon-elasticache)
