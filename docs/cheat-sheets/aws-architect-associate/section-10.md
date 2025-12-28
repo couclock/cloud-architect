@@ -1,8 +1,15 @@
 # Decoupling applications: SQS, SNS, Kinesis & ActiveMQ
 
-Prompt to use:
+- [Decoupling applications: SQS, SNS, Kinesis \& ActiveMQ](#decoupling-applications-sqs-sns-kinesis--activemq)
+  - [Integration \& Messaging](#integration--messaging)
+  - [Amazon SQS](#amazon-sqs)
+  - [Amazon SQS – Key SAA Exam Concepts](#amazon-sqs--key-saa-exam-concepts)
+  - [Amazon SNS](#amazon-sns)
+  - [Kinesis Data Streams](#kinesis-data-streams)
+  - [**Amazon Data Firehose (Kinesis Data Firehose)**](#amazon-data-firehose-kinesis-data-firehose)
+  - [SQS vs SNS vs Kinesis](#sqs-vs-sns-vs-kinesis)
+  - [**Amazon MQ**](#amazon-mq)
 
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet. Include a second-level Markdown title (##) at the top using the section’s main topic. Format the rest in raw Markdown inside a code block, with no separators. Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices. Use simple icons when relevant, but keep them limited. Keep the cheat sheet extremely concise and easy to memorize. Here’s the transcript:
 
 ## Integration & Messaging
 

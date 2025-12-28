@@ -1,15 +1,5 @@
+# Serverless: Lambda, API Gateway, Cognito, DynamoDB
 
-Prompt to use:
-
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet using markdown format in a code block. 
-- Include a second-level Markdown title as the cheat sheet title (##). 
-- In your markdown: no separators. 
-- Use 3rd level titles (###), short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices. 
-- Use simple icons when relevant, but keep them limited. 
-- Keep the cheat sheet extremely concise and easy to memorize. 
-Here’s the transcript:
-
-TOC:
 - [Serverless: Lambda, API Gateway, Cognito, DynamoDB](#serverless-lambda-api-gateway-cognito-dynamodb)
   - [AWS Lambda](#aws-lambda)
   - [AWS Lambda Limits](#aws-lambda-limits)
@@ -23,8 +13,6 @@ TOC:
   - [API Gateway Cheat Sheet](#api-gateway-cheat-sheet)
   - [Step Functions Cheat Sheet](#step-functions-cheat-sheet)
   - [AWS SAA Amazon Cognito Cheat Sheet (Ultra-Compact)](#aws-saa-amazon-cognito-cheat-sheet-ultra-compact)
-
-# Serverless: Lambda, API Gateway, Cognito, DynamoDB
 
 ## AWS Lambda
 

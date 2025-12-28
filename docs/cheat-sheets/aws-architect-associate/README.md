@@ -36,5 +36,14 @@
 - Section 11 - [Containers: ECS, Fargate, ECR & EKS](section-11.md)
 - Section 12 - [Serverless: Lambda, API Gateway, Cognito, DynamoDB](section-12.md)
 - Section 13 - [Serverless solution architectures discussions](section-13.md)
+- Section 14 - [Databases in AWS](section-14.md)
 
+## Prompt to use
 
+Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet using markdown format in a code block. 
+- Include a second-level Markdown title as the cheat sheet title (##). 
+- In your markdown: no separators. 
+- Use 3rd level titles (###), short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices. 
+- Use simple icons when relevant, but keep them limited. 
+- Keep the cheat sheet extremely concise and easy to memorize. 
+Here’s the transcript:

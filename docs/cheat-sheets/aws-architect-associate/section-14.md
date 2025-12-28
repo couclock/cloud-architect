@@ -1,11 +1,22 @@
 
-# Serverless solution architectures discussions
+Prompt to use:
 
+Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet using markdown format in a code block. 
+- Include a second-level Markdown title as the cheat sheet title (##). 
+- In your markdown: no separators. 
+- Use 3rd level titles (###), short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices. 
+- Use simple icons when relevant, but keep them limited. 
+- Keep the cheat sheet extremely concise and easy to memorize. 
+Here’s the transcript:
+
+TOC:
 - [Serverless solution architectures discussions](#serverless-solution-architectures-discussions)
   - [MyTodoList](#mytodolist)
   - [MyBlog.com](#myblogcom)
   - [AWS SAA – Serverless Hosted Website (MyBlog.com)](#aws-saa--serverless-hosted-website-myblogcom)
   - [Software Updates Offloading](#software-updates-offloading)
+
+# Serverless solution architectures discussions
 
 ## MyTodoList
 
