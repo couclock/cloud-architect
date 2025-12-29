@@ -1,14 +1,13 @@
 # Amazon S3 Fundamentals
 
-Prompt to use:
-
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Include a second-level Markdown title (##) at the top using the section’s main topic.
-Format the rest in raw Markdown inside a code block, with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons when relevant, but keep them limited.
-Keep the cheat sheet extremely concise and easy to memorize.
-Here’s the transcript:
+- [Amazon S3 Fundamentals](#amazon-s3-fundamentals)
+  - [Amazon S3 Overview](#amazon-s3-overview)
+  - [Amazon S3 Security](#amazon-s3-security)
+  - [Static Website Hosting](#static-website-hosting)
+  - [Versioning](#versioning)
+  - [Replication](#replication)
+  - [Storage Classes](#storage-classes)
+  - [S3 Express One Zone](#s3-express-one-zone)
 
 ## Amazon S3 Overview
 

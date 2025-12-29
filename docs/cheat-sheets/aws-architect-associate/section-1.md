@@ -1,11 +1,9 @@
 # AWS Fundamentals & IAM
 
-Prompt to use:
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Format it in raw Markdown (inside a code block), with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons to make key concepts easier to scan and memorize when relevant, do not use too many.
-Keep it extremely concise and easy to memorize. Here's the transcript:
+- [AWS Fundamentals \& IAM](#aws-fundamentals--iam)
+  - [Regions, AZs and Edge locations](#regions-azs-and-edge-locations)
+  - [🔐 IAM – Identity \& Access Management](#-iam--identity--access-management)
+
 
 ## Regions, AZs and Edge locations
 

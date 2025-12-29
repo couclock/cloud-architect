@@ -1,14 +1,16 @@
 # High Availability & Scalability: ELB & ASG
 
-Prompt to use:
-
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Include a second-level Markdown title (##) at the top using the section’s main topic.
-Format the rest in raw Markdown inside a code block, with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons when relevant, but keep them limited.
-Keep the cheat sheet extremely concise and easy to memorize.
-Here’s the transcript:
+- [High Availability \& Scalability: ELB \& ASG](#high-availability--scalability-elb--asg)
+  - [Scalability \& High Availability](#scalability--high-availability)
+  - [Elastic Load Balancing overview](#elastic-load-balancing-overview)
+  - [Application Load Balancer (ALB)](#application-load-balancer-alb)
+  - [Network Load Balancer (NLB)](#network-load-balancer-nlb)
+  - [Gateway Load Balancer (GWLB)](#gateway-load-balancer-gwlb)
+  - [ELB Sticky Sessions (Session Affinity)](#elb-sticky-sessions-session-affinity)
+  - [Cross-Zone Load Balancing (XZLB)](#cross-zone-load-balancing-xzlb)
+  - [SSL / TLS Certificates \& SNI (ELB)](#ssl--tls-certificates--sni-elb)
+  - [Auto Scaling Group (ASG)](#auto-scaling-group-asg)
+  - [Auto Scaling Policies](#auto-scaling-policies)
 
 ## Scalability & High Availability
 

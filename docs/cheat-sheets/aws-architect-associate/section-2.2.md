@@ -1,13 +1,11 @@
 # EC2 - Solutions Architect Associate level
 
-Prompt to use:
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Include a second-level Markdown title (##) at the top using the section’s main topic.
-Format the rest in raw Markdown inside a code block, with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons when relevant, but keep them limited.
-Keep the cheat sheet extremely concise and easy to memorize.
-Here’s the transcript:
+- [EC2 - Solutions Architect Associate level](#ec2---solutions-architect-associate-level)
+  - [EC2 Public, Private \& Elastic IPs](#ec2-public-private--elastic-ips)
+  - [EC2 Placement Groups](#ec2-placement-groups)
+  - [Elastic Network Interfaces (ENI)](#elastic-network-interfaces-eni)
+  - [EC2 Hibernate](#ec2-hibernate)
+
 
 ## EC2 Public, Private & Elastic IPs
 
@@ -41,7 +39,7 @@ Here’s the transcript:
 - IGW = public subnet → Internet.
 - EIPs generally = bad architecture → use DNS/ALB.
 
-## EC2 Placement Groups (SAA Revision)
+## EC2 Placement Groups
 
 ### 🧩 Types
 - **Cluster PG**  

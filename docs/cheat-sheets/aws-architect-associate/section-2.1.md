@@ -1,13 +1,15 @@
 # EC2 Fundamentals
 
-Prompt to use:
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Include a second-level Markdown title (##) at the top using the section’s main topic.
-Format the rest in raw Markdown inside a code block, with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons when relevant, but keep them limited.
-Keep the cheat sheet extremely concise and easy to memorize.
-Here’s the transcript:
+- [EC2 Fundamentals](#ec2-fundamentals)
+  - [EC2 Essentials](#ec2-essentials)
+  - [EC2 Instance Types](#ec2-instance-types)
+  - [EC2 Security Groups (Firewall Rules)](#ec2-security-groups-firewall-rules)
+  - [EC2 Instance Connect (Browser-Based SSH)](#ec2-instance-connect-browser-based-ssh)
+  - [Using IAM Roles with EC2 Instances](#using-iam-roles-with-ec2-instances)
+  - [EC2 Purchasing Options](#ec2-purchasing-options)
+  - [EC2 Spot Instances \& Spot Fleets](#ec2-spot-instances--spot-fleets)
+  - [EC2 Launch Methods \& Options](#ec2-launch-methods--options)
+
 
 ## EC2 Essentials
 - 💻 **EC2 = Elastic Compute Cloud** → core IaaS service  
@@ -180,7 +182,8 @@ Here’s the transcript:
 - 🔄 No need to manage keys  
 - 🚫 Never store Access Keys on instances  
 
-## EC2 Purchasing Options (SAA)
+---
+## EC2 Purchasing Options
 
 ### On-Demand
 - 🕒 Pay per sec (Linux/Windows), per hour (others)

@@ -2,18 +2,15 @@
 
 - [Containers: ECS, Fargate, ECR \& EKS](#containers-ecs-fargate-ecr--eks)
   - [Amazon ECS](#amazon-ecs)
-  - [Amazon ECS – SAA Revision Cheat Sheet](#amazon-ecs--saa-revision-cheat-sheet)
   - [ECS Hands-On](#ecs-hands-on)
-  - [ECS Service Auto Scaling \& Architectures – SAA Revision Cheat Sheet](#ecs-service-auto-scaling--architectures--saa-revision-cheat-sheet)
-  - [Amazon ECR – SAA Revision Cheat Sheet](#amazon-ecr--saa-revision-cheat-sheet)
-  - [Amazon EKS – SAA Revision Cheat Sheet](#amazon-eks--saa-revision-cheat-sheet)
+  - [ECS Service Auto Scaling \& Architectures](#ecs-service-auto-scaling--architectures)
+  - [Amazon ECR](#amazon-ecr)
+  - [Amazon EKS](#amazon-eks)
   - [AWS App Runner](#aws-app-runner)
   - [AWS App2Container (A2C)](#aws-app2container-a2c)
 
 
 ## Amazon ECS
-
-## Amazon ECS – SAA Revision Cheat Sheet
 
 ### ECS Basics
 - 🐳 ECS = Elastic Container Service
@@ -122,7 +119,7 @@
 - Easy scaling up/down via service updates
 
 ---
-## ECS Service Auto Scaling & Architectures – SAA Revision Cheat Sheet
+## ECS Service Auto Scaling & Architectures
 
 ### Service Auto Scaling
 - Use **AWS Application Auto Scaling**
@@ -161,7 +158,7 @@
 - EventBridge + ECS → serverless event-driven architectures
 
 ---
-## Amazon ECR – SAA Revision Cheat Sheet
+## Amazon ECR
 
 ### ECR Basics
 - **ECR = Elastic Container Registry**
@@ -189,7 +186,7 @@
 - Public vs private repository = account access
 
 ---
-## Amazon EKS – SAA Revision Cheat Sheet
+## Amazon EKS
 
 ### EKS Basics
 - **EKS = Elastic Kubernetes Service**

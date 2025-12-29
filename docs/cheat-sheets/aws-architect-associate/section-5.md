@@ -1,20 +1,20 @@
 # Route 53
 
+- [Route 53](#route-53)
+  - [DNS Overview](#dns-overview)
+  - [Amazon Route 53](#amazon-route-53)
+  - [Route 53 – Creating DNS Records](#route-53--creating-dns-records)
+  - [Records, EC2 Targets, ALB \& TTL](#records-ec2-targets-alb--ttl)
+  - [CNAME vs Alias](#cname-vs-alias)
+  - [Simple \& Weighted Routing Policies](#simple--weighted-routing-policies)
+  - [Latency-Based Routing](#latency-based-routing)
+  - [Route 53 Health Checks](#route-53-health-checks)
+  - [Geoproximity Routing Policy](#geoproximity-routing-policy)
+  - [IP-based Routing Policy](#ip-based-routing-policy)
+  - [Multi-Value Routing Policy](#multi-value-routing-policy)
+  - [Domain Registrar vs DNS Service](#domain-registrar-vs-dns-service)
+  - [Route 53 Resolver (Hybrid DNS)](#route-53-resolver-hybrid-dns)
 
-- 54.217.153.33 => eu-west-1
-- 98.93.37.116 => us-east-1
-- 18.143.153.17 => ap-southeast-1
-- ALB: training-ALB-808171759.eu-west-1.elb.amazonaws.com
-
-Prompt to use:
-
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Include a second-level Markdown title (##) at the top using the section’s main topic.
-Format the rest in raw Markdown inside a code block, with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons when relevant, but keep them limited.
-Keep the cheat sheet extremely concise and easy to memorize.
-Here’s the transcript:
 
 ## DNS Overview
 

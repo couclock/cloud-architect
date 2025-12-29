@@ -1,13 +1,16 @@
 # EC2 Instance Storage
 
-Prompt to use:
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Include a second-level Markdown title (##) at the top using the section’s main topic.
-Format the rest in raw Markdown inside a code block, with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons when relevant, but keep them limited.
-Keep the cheat sheet extremely concise and easy to memorize.
-Here’s the transcript:
+- [EC2 Instance Storage](#ec2-instance-storage)
+  - [EBS Volumes](#ebs-volumes)
+  - [EBS Snapshots](#ebs-snapshots)
+  - [AMIs (Amazon Machine Images)](#amis-amazon-machine-images)
+  - [EC2 Instance Store](#ec2-instance-store)
+  - [EBS Volumes \& Volume Types](#ebs-volumes--volume-types)
+  - [Multi-Attach Feature](#multi-attach-feature)
+  - [EBS Encryption](#ebs-encryption)
+  - [Amazon EFS](#amazon-efs)
+  - [EBS vs EFS](#ebs-vs-efs)
+
 
 ## EBS Volumes
 

@@ -1,14 +1,12 @@
 # Solution architect discussions
 
-Prompt to use:
+- [Solution architect discussions](#solution-architect-discussions)
+  - [whatsthetime.com - EC2 → ELB → ASG → Multi-AZ Architecture Evolution](#whatsthetimecom---ec2--elb--asg--multi-az-architecture-evolution)
+  - [Stateful Web Application – MyClothes.com](#stateful-web-application--myclothescom)
+  - [Scalable WordPress on AWS (Stateful App)](#scalable-wordpress-on-aws-stateful-app)
+  - [Fast Application Instantiation](#fast-application-instantiation)
+  - [AWS Elastic Beanstalk Overview](#aws-elastic-beanstalk-overview)
 
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Include a second-level Markdown title (##) at the top using the section’s main topic.
-Format the rest in raw Markdown inside a code block, with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons when relevant, but keep them limited.
-Keep the cheat sheet extremely concise and easy to memorize.
-Here’s the transcript:
 
 ## whatsthetime.com - EC2 → ELB → ASG → Multi-AZ Architecture Evolution
 

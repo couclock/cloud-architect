@@ -1,14 +1,16 @@
 # RDS, Aurora and ElastiCache
 
-Prompt to use:
+- [RDS, Aurora and ElastiCache](#rds-aurora-and-elasticache)
+  - [AWS RDS Overview](#aws-rds-overview)
+  - [RDS Read Replicas vs Multi-AZ](#rds-read-replicas-vs-multi-az)
+  - [Creating \& Using an Amazon RDS Instance](#creating--using-an-amazon-rds-instance)
+  - [Amazon RDS Custom](#amazon-rds-custom)
+  - [Amazon Aurora](#amazon-aurora)
+  - [Amazon Aurora – Advanced Concepts](#amazon-aurora--advanced-concepts)
+  - [RDS \& Aurora: Backups, Security, Proxy](#rds--aurora-backups-security-proxy)
+  - [Amazon ElastiCache](#amazon-elasticache)
+  - [Common Network \& Database Ports](#common-network--database-ports)
 
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Include a second-level Markdown title (##) at the top using the section’s main topic.
-Format the rest in raw Markdown inside a code block, with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons when relevant, but keep them limited.
-Keep the cheat sheet extremely concise and easy to memorize.
-Here’s the transcript:
 
 ## AWS RDS Overview
 - 🗄️ RDS = managed **relational (SQL)** database service
@@ -524,7 +526,7 @@ Here’s the transcript:
 ## Common Network & Database Ports
 
 
-## Common Network & Database Ports (AWS SAA)
+## Common Network & Database Ports
 
 ```md
 ### Important / General Ports ⭐

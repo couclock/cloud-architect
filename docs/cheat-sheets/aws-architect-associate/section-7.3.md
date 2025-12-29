@@ -1,14 +1,15 @@
 # Amazon S3 Advanced
 
-Prompt to use:
+- [Amazon S3 Advanced](#amazon-s3-advanced)
+  - [Object Encryption](#object-encryption)
+  - [CORS](#cors)
+  - [S3 MFA Delete](#s3-mfa-delete)
+  - [Access Logs](#access-logs)
+  - [Pre-Signed URLs](#pre-signed-urls)
+  - [Glacier Vault Lock \& S3 Object Lock](#glacier-vault-lock--s3-object-lock)
+  - [Access Points](#access-points)
+  - [S3 Object Lambda](#s3-object-lambda)
 
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet.
-Include a second-level Markdown title (##) at the top using the section’s main topic.
-Format the rest in raw Markdown inside a code block, with no separators.
-Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices.
-Use simple icons when relevant, but keep them limited.
-Keep the cheat sheet extremely concise and easy to memorize.
-Here’s the transcript:
 
 ## Object Encryption
 

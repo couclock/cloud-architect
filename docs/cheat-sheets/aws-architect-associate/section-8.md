@@ -1,8 +1,13 @@
 # Cloud Front & AWS Global Accelerator
 
-Prompt to use:
+- [Cloud Front \& AWS Global Accelerator](#cloud-front--aws-global-accelerator)
+  - [**CloudFront (CDN)**](#cloudfront-cdn)
+  - [Connecting to ALB / EC2 Origins](#connecting-to-alb--ec2-origins)
+  - [Geo Restriction](#geo-restriction)
+  - [Pricing \& Price Classes](#pricing--price-classes)
+  - [Cache Invalidations](#cache-invalidations)
+  - [AWS Global Accelerator](#aws-global-accelerator)
 
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet. Include a second-level Markdown title (##) at the top using the section’s main topic. Format the rest in raw Markdown inside a code block, with no separators. Use short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices. Use simple icons when relevant, but keep them limited. Keep the cheat sheet extremely concise and easy to memorize. Here’s the transcript:
 
 ## **CloudFront (CDN)**
 
