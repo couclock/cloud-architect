@@ -39,6 +39,7 @@
 - Section 14 - [Databases in AWS](section-14.md)
 - Section 15 - [Data & Analytics](section-15.md)
 - Section 16 - [AI & Machine learning](section-16.md)
+- Section 17 - [Monitoring & Audit](section-17.md)
 
 ## Prompt to use
 
