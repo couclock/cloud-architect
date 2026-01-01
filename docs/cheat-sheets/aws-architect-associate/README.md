@@ -40,6 +40,7 @@
 - Section 15 - [Data & Analytics](section-15.md)
 - Section 16 - [AI & Machine learning](section-16.md)
 - Section 17 - [Monitoring & Audit](section-17.md)
+- Section 18 - [IAM Advanced](section-18.md)
 
 ## Prompt to use
 
