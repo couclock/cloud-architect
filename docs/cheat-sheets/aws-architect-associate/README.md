@@ -42,6 +42,7 @@
 - Section 17 - [Monitoring & Audit](section-17.md)
 - Section 18 - [IAM Advanced](section-18.md)
 - Section 19 - [AWS Security & Encryption: KMS, SSM Parameter Store, Shield, WAF](section-19.md)
+- Section 20 - [Networking - VPC](section-20.md)
 
 ## Prompt to use
 
