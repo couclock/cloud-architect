@@ -41,6 +41,7 @@
 - Section 16 - [AI & Machine learning](section-16.md)
 - Section 17 - [Monitoring & Audit](section-17.md)
 - Section 18 - [IAM Advanced](section-18.md)
+- Section 19 - [AWS Security & Encryption: KMS, SSM Parameter Store, Shield, WAF](section-19.md)
 
 ## Prompt to use
 
