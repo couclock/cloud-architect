@@ -12,7 +12,7 @@
   - [AWS DynamoDB – Advanced Features](#aws-dynamodb--advanced-features)
   - [API Gateway Cheat Sheet](#api-gateway-cheat-sheet)
   - [Step Functions Cheat Sheet](#step-functions-cheat-sheet)
-  - [AWS SAA Amazon Cognito Cheat Sheet (Ultra-Compact)](#aws-saa-amazon-cognito-cheat-sheet-ultra-compact)
+  - [Amazon Cognito](#amazon-cognito)
 
 ## AWS Lambda
 
@@ -484,7 +484,7 @@ If the exam mentions throttling, cold starts, or shared limits — this topic is
 - Serverless coordination of services
 
 ---
-## AWS SAA Amazon Cognito Cheat Sheet (Ultra-Compact)
+## Amazon Cognito
 
 ### What it is
 - Identity service for **web & mobile users** 👤
@@ -499,7 +499,6 @@ If the exam mentions throttling, cold starts, or shared limits — this topic is
 - Issues JWT tokens
 
 ![From Udemy course - Ultimate AWS Certified Solutions Architect Associate](images/cognito_user_pools.png)
-
 
 ### CUP Integrations
 - **API Gateway** → token validation → Lambda

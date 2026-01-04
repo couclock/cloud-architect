@@ -7,6 +7,7 @@
   - [Amazon OpenSearch Service](#amazon-opensearch-service)
   - [Amazon EMR](#amazon-emr)
   - [Amazon QuickSight](#amazon-quicksight)
+  - [AWS Glue](#aws-glue)
   - [AWS Lake Formation](#aws-lake-formation)
   - [Amazon Managed Service for Apache Flink](#amazon-managed-service-for-apache-flink)
   - [Amazon MSK (Managed Streaming for Apache Kafka)](#amazon-msk-managed-streaming-for-apache-kafka)
@@ -221,6 +222,53 @@
 - Athena → QuickSight (S3 analytics)
 - Redshift → QuickSight (data warehouse BI)
 - Need dashboards, not querying → **QuickSight**
+
+---
+## AWS Glue
+
+### What It Is
+- Managed **ETL (Extract, Transform, Load)** service
+- Fully **serverless**
+- Used to prepare data for analytics
+
+### Core ETL Use Case
+- Extract from **S3 / RDS**
+- Transform (filter, enrich, clean)
+- Load into **Redshift**
+- Run by submitting ETL jobs (code-based)
+
+### Common Exam Scenario
+- Convert **CSV → Parquet**
+  - Parquet = columnar, faster & cheaper for analytics
+  - Optimized for **Athena**
+- Typical flow:
+  - S3 (CSV) → Glue ETL → S3 (Parquet)
+
+### Automation
+- Trigger Glue jobs on S3 uploads via:
+  - **Lambda** or **EventBridge**
+
+### Glue Data Catalog
+- Central metadata store
+- Uses **crawlers** to scan:
+  - S3, RDS, DynamoDB, JDBC sources
+- Stores tables, schemas, data types
+- Used by:
+  - Glue ETL, **Athena**, Redshift Spectrum, **EMR**
+
+### Additional Glue Features (Exam-Relevant)
+- **Job Bookmarks** → avoid reprocessing old data
+- **Glue DataBrew** → no-code data cleaning
+- **Glue Studio** → GUI for ETL jobs
+- **Glue Streaming ETL**
+  - Based on Spark Structured Streaming
+  - Reads from **Kinesis**, **Kafka / MSK**
+
+### Exam Tips 📝
+- Glue = serverless ETL + Data Catalog
+- CSV → Parquet → Athena = classic question
+- Data Catalog is shared across analytics services
+
 
 ---
 ## AWS Lake Formation
