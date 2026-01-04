@@ -18,9 +18,9 @@
   - [AWS Transit Gateway \& VPC Traffic Mirroring](#aws-transit-gateway--vpc-traffic-mirroring)
   - [IPv6 in AWS 🌐](#ipv6-in-aws-)
   - [Egress-Only Internet Gateway (EIGW) – IPv6 🔒](#egress-only-internet-gateway-eigw--ipv6-)
-- [VPC \& Networking – Full Summary 🌐](#vpc--networking--full-summary-)
-- [AWS Networking Cost Overview 💰](#aws-networking-cost-overview-)
-  - [AWS Network Protection – Compact Summary 🔐](#aws-network-protection--compact-summary-)
+  - [VPC \& Networking – Full Summary 🌐](#vpc--networking--full-summary-)
+  - [AWS Networking Cost Overview 💰](#aws-networking-cost-overview-)
+  - [AWS Network Protection 🔐](#aws-network-protection-)
 
 ## CIDR & IPv4
 
@@ -707,7 +707,7 @@ A subnet is **public** if ALL are true:
 ✅ Useful for IPv6-only outbound traffic in private subnets
 
 ---
-# VPC & Networking – Full Summary 🌐
+## VPC & Networking – Full Summary 🌐
 
 ### Key Concepts
 - **CIDR** → IP address range  
@@ -756,7 +756,7 @@ A subnet is **public** if ALL are true:
 - Flow Logs: **VPC, Subnet, ENI levels**, analyze via S3/Athena or CloudWatch  
 
 ---
-# AWS Networking Cost Overview 💰
+## AWS Networking Cost Overview 💰
 
 ### Key Principles
 - **Ingress traffic (into AWS)** → free  
@@ -806,7 +806,7 @@ A subnet is **public** if ALL are true:
 ✅ Networking cost depends on AZ, region, and path; plan architecture to balance cost vs. high availability.
 
 ---
-## AWS Network Protection – Compact Summary 🔐
+## AWS Network Protection 🔐
 
 ### Existing Controls
 - **NACLs**: subnet-level, stateless  

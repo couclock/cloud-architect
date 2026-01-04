@@ -35,7 +35,7 @@
 - Section 10 - [Decoupling applications: SQS, SNS, Kinesis & ActiveMQ](section-10.md)
 - Section 11 - [Containers: ECS, Fargate, ECR & EKS](section-11.md)
 - Section 12 - [Serverless: Lambda, API Gateway, Cognito, DynamoDB](section-12.md)
-- Section 13 - [Serverless solution architectures discussions](section-13.md)
+- Section 13 - [Serverless solution architecture discussions](section-13.md)
 - Section 14 - [Databases in AWS](section-14.md)
 - Section 15 - [Data & Analytics](section-15.md)
 - Section 16 - [AI & Machine learning](section-16.md)
@@ -43,6 +43,7 @@
 - Section 18 - [IAM Advanced](section-18.md)
 - Section 19 - [AWS Security & Encryption: KMS, SSM Parameter Store, Shield, WAF](section-19.md)
 - Section 20 - [Networking - VPC](section-20.md)
+- Section 21 - [Disaster Recovery & Migration](section-21.md)
 
 ## Prompt to use
 

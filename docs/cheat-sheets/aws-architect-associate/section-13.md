@@ -1,7 +1,7 @@
 
-# Serverless solution architectures discussions
+# Serverless solution architecture discussions
 
-- [Serverless solution architectures discussions](#serverless-solution-architectures-discussions)
+- [Serverless solution architecture discussions](#serverless-solution-architecture-discussions)
   - [MyTodoList](#mytodolist)
   - [MyBlog.com](#myblogcom)
   - [AWS SAA – Serverless Hosted Website (MyBlog.com)](#aws-saa--serverless-hosted-website-myblogcom)
