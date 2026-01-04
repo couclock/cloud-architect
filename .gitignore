@@ -60,7 +60,7 @@ override.tf
 override.tf.json
 *.tfvars
 *.tfvars.json
-terraform/**/files/*.zip
+*.zip
 
 
 # Note: keep .terraform.lock.hcl in repo for provider version locking unless you intentionally want to ignore it.

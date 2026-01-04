@@ -7,11 +7,9 @@ variable "my_domain" {
 }
 
 data "terraform_remote_state" "yfinance_lambda" {
-  backend = "s3"
+  backend = "local"
   config = {
-    bucket = "tf-states-cloud-arch-ai-portfolio"
-    key    = "yfinance-lambda/terraform.tfstate"
-    region = "eu-west-1"
+    path = "../yfinance-lambda/terraform.tfstate"
   }
 }
 

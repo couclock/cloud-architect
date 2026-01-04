@@ -1,12 +1,5 @@
 # How to generate required infra
 
-- Create remote state storage
-```
-cd stacks/remote-state-storage
-terraform init
-terraform apply
-```
-
 - Create IAM role required for lambda functions
 ```
 cd stacks/common-lambda

@@ -7,6 +7,31 @@ resource "aws_apigatewayv2_api" "utilities_api" {
   name          = "utilities-api"
   description   = "API utilities: yfinance proxy"
   protocol_type = "HTTP"
+  cors_configuration {
+    allow_origins = [
+      "http://localhost:3000",
+      "https://ton-frontend.com"
+    ]
+
+    allow_methods = [
+      "GET",
+      "OPTIONS"
+    ]
+
+    allow_headers = [
+      "content-type",
+      "authorization",
+      "x-amz-date",
+      "x-api-key",
+      "x-amz-security-token"
+    ]
+
+    expose_headers = [
+      "content-length"
+    ]
+
+    max_age = 3600
+  }
 }
 
 # Intégration Lambda

@@ -33,6 +33,6 @@ def handler(event, context):
     # Retour JSON
     return {
         "statusCode": 200,
-        "headers", Map.of("Content-Type", "application/json"),
+        "headers": {"Content-Type": "application/json"},
         "body": json.dumps(result, default=str)  # default=str pour sérialiser les objets non JSON
     }

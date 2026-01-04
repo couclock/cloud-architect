@@ -4,11 +4,9 @@ provider "aws" {
 
 
 data "terraform_remote_state" "common_lambda" {
-  backend = "s3"
+  backend = "local"
   config = {
-    bucket = "tf-states-cloud-arch-ai-portfolio"
-    key    = "common-lambda/terraform.tfstate"
-    region = "eu-west-1"
+    path = "../common-lambda/terraform.tfstate"
   }
 }
 
