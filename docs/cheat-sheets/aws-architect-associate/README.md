@@ -45,6 +45,8 @@
 - Section 20 - [Networking - VPC](section-20.md)
 - Section 21 - [Disaster Recovery & Migration](section-21.md)
 - Section 22 - [More solution architectures](section-22.md)
+- Section 23 - [Other services](section-23.md)
+- Section 24 - [White papers and architectures](section-24.md)
 
 ## Prompt to use
 
