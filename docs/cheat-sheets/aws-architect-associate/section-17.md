@@ -7,6 +7,7 @@
   - [CloudWatch Logs](#cloudwatch-logs)
   - [CloudWatch Agents](#cloudwatch-agents)
   - [CloudWatch Alarms](#cloudwatch-alarms)
+  - [CloudWatch Network Synthetic Monitor](#cloudwatch-network-synthetic-monitor)
   - [Amazon EventBridge](#amazon-eventbridge)
   - [CloudWatch Insights — SAA Quick Cheat Sheet](#cloudwatch-insights--saa-quick-cheat-sheet)
   - [AWS CloudTrail](#aws-cloudtrail)
@@ -248,6 +249,46 @@
 - Recovery ≠ reboot
 - Logs need metric filters first
 - Alarms can directly terminate EC2
+
+---
+## CloudWatch Network Synthetic Monitor
+
+### What it is 🌐
+
+- AWS-managed **network monitoring** between **on-premises ↔ AWS**  
+- Designed for **Direct Connect** and **Site-to-Site VPN**
+
+### What it detects 🔍
+
+- **Packet loss**  
+- **Latency**  
+- **Jitter**  
+- Near **real-time visibility**
+
+### How it works ⚙️
+
+- **No agents required**  
+- Sends **ICMP or TCP** probes  
+- **IPv4 traffic** only  
+- Tests traffic **through DX or VPN**
+
+### Metrics & Actions 📊
+
+- Publishes results to **Amazon CloudWatch Metrics**  
+- Enables **alarms, dashboards, automated responses**
+
+### When to use ✅
+
+- Validate **network health** between data center and AWS  
+- Troubleshoot **connectivity/performance degradation**  
+- Continuous monitoring of **hybrid connectivity**
+
+### Exam Tips 🧠
+
+- Think **hybrid networking visibility**  
+- **DX/VPN monitoring** without installing software  
+- Uses **CloudWatch Metrics** (not logs)  
+- Focuses on **network performance**, not application health
 
 ---
 ## Amazon EventBridge

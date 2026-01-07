@@ -9,6 +9,7 @@
   - [SSM Parameter Store](#ssm-parameter-store)
   - [Secrets Manager](#secrets-manager)
   - [Certificate Manager - ACM](#certificate-manager---acm)
+  - [CloudHSM vs KMS](#cloudhsm-vs-kms)
   - [AWS WAF / Shield / Firewall Manager](#aws-waf--shield--firewall-manager)
   - [AWS DDoS Protection – Solution Architecture](#aws-ddos-protection--solution-architecture)
   - [AWS Threat Detection \& Vulnerability Services (Exam-Compact)](#aws-threat-detection--vulnerability-services-exam-compact)
@@ -275,6 +276,49 @@ Steps to launch EC2 in Account B from encrypted AMI in Account A:
 - CloudFront certs always **us-east-1**
 - Imported ≠ auto-renew
 - Cannot export ACM public certs
+
+---
+## CloudHSM vs KMS
+
+### CloudHSM 🔐
+
+- **Dedicated HSM hardware** (single-tenant)  
+- **You manage keys** (AWS no access)  
+- **FIPS 140-2 Level 3**  
+- **Symmetric, asymmetric, signing, hashing**  
+- **No free tier**  
+- Requires **CloudHSM client**
+
+### Availability & Access 🏗️
+
+- **Multi-AZ cluster**, key replication  
+- Deployed in **VPC**  
+- Own **users & permissions** (not IAM)
+
+### Integrations 🔗
+
+- **KMS Custom Key Store**  
+  - KMS uses **CloudHSM-backed keys**  
+  - Works with **EBS, S3, RDS, Redshift**  
+  - **CloudTrail logs** KMS → HSM calls
+
+### Use Cases ✅
+
+- **SSE-C for S3**  
+- Strict compliance / full key ownership  
+- **SSL/TLS, Oracle TDE acceleration**
+
+### CloudHSM vs KMS 🆚
+
+- **Tenancy**: HSM \= single | KMS \= multi  
+- **Key control**: HSM \= customer | KMS \= AWS-managed  
+- **Auth**: HSM users | KMS IAM  
+- **Cost**: HSM paid | KMS free tier
+
+### Exam Tip 🧠
+
+- Need **hardware \+ exclusive key control** → **CloudHSM**  
+- Default AWS encryption → **KMS**
 
 ---
 ## AWS WAF / Shield / Firewall Manager

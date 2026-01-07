@@ -44,6 +44,7 @@
 - Section 19 - [AWS Security & Encryption: KMS, SSM Parameter Store, Shield, WAF](section-19.md)
 - Section 20 - [Networking - VPC](section-20.md)
 - Section 21 - [Disaster Recovery & Migration](section-21.md)
+- Section 22 - [More solution architectures](section-22.md)
 
 ## Prompt to use
 
