@@ -57,6 +57,7 @@
 - Security Groups = **stateful**  
 - User Data = **one-time run**, good for automation  
 - Public IP volatility → use **Elastic IP** if persistence needed  
+- Getting EC2 metadata: `curl http://169.254.169.254/latest/meta-data/`
 
 ## EC2 Instance Types
 

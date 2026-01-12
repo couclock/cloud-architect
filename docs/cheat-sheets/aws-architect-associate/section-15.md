@@ -294,6 +294,7 @@
 - **Centralized fine-grained access control**
   - **Row-level & column-level security**
   - Single place to manage permissions
+  - Tag-based Access Control (TBAC)
 
 ### Architecture
 - Lake Formation layer on top of **Glue**
