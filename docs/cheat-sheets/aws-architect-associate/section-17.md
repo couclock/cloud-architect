@@ -9,8 +9,11 @@
   - [CloudWatch Alarms](#cloudwatch-alarms)
   - [CloudWatch Network Synthetic Monitor](#cloudwatch-network-synthetic-monitor)
   - [Amazon EventBridge](#amazon-eventbridge)
-  - [CloudWatch Insights — SAA Quick Cheat Sheet](#cloudwatch-insights--saa-quick-cheat-sheet)
+  - [CloudWatch Insights](#cloudwatch-insights)
   - [AWS CloudTrail](#aws-cloudtrail)
+  - [Amazon Managed Prometheus \& Grafana](#amazon-managed-prometheus--grafana)
+  - [AWS Personal Health Dashboard (PHD)](#aws-personal-health-dashboard-phd)
+  - [AWS Service Health Dashboard (SHD)](#aws-service-health-dashboard-shd)
 
 
 ## Amazon CloudWatch Metrics
@@ -347,7 +350,7 @@
 - Composite workflows → EventBridge + Lambda
 
 ---
-## CloudWatch Insights — SAA Quick Cheat Sheet
+## CloudWatch Insights
 
 ### Container Insights 🐳
 - Metrics + logs for containers
@@ -548,3 +551,125 @@ Helps answer:
 📈 Performance → CloudWatch  
 🧾 Audit → CloudTrail  
 ✅ Compliance → Config  
+
+---
+## Amazon Managed Prometheus & Grafana
+
+### 🧠 Overview
+- **AMP** = metrics **storage + query**
+- **AMG** = metrics **visualization**
+- Fully managed, serverless
+
+### 🧩 Core Roles
+- **AMP**
+  - Prometheus-compatible backend
+  - **Workspaces**
+  - **PromQL**
+  - ❌ No scraping
+- **AMG**
+  - Managed Grafana UI
+  - Dashboards only
+  - ❌ No data storage
+
+### 📥 Ingestion
+- Prometheus **remote_write**
+- Sources: Prometheus, **EKS**, ADOT
+- **IAM (SigV4)** auth
+
+### 📤 Query & Visualize
+- Queries via **PromQL**
+- Visualize in **Amazon Managed Grafana**
+- AMP has no native UI
+
+### 🔌 Data Sources (AMG)
+- **AMP** ⭐
+- **CloudWatch**
+- **OpenSearch**
+- **X-Ray**
+- **Timestream**
+
+### 🔐 Security
+- **IAM / SSO**
+- Workspace-based access
+- Encrypted at rest
+
+### 📈 Ops
+- Auto-scaling
+- High availability
+- No servers to manage
+
+### 🆚 Key Distinctions
+- AMP ≠ scraping
+- AMG ≠ storage
+- CloudWatch ≠ Prometheus
+
+### 🎯 When to Use
+- **EKS / Kubernetes monitoring**
+- Centralized Prometheus metrics
+- AWS-native observability
+
+### 🧪 Exam Tips ⭐
+- AMP stores, AMG shows
+- Scraping is external
+- AMP + AMG is the reference architecture
+- Simple EC2 metrics → CloudWatch
+
+---
+## AWS Personal Health Dashboard (PHD)
+
+### 🧠 What
+- Personalized view of **AWS service health**
+- Shows events affecting **your account/resources**
+
+### 🧩 Features
+- **Service events**: scheduled maintenance, issues
+- **Account-specific**
+- Event **notifications** via **SNS** ⭐
+
+### 🔄 How it Works
+- AWS detects issues → PHD → optional **SNS alert**
+- Integrates with **CloudWatch Events / EventBridge**
+
+### 🎯 When to Use
+- Proactive monitoring
+- Plan around **maintenance windows**
+- Rapid response to AWS issues
+
+### 🔐 Security
+- **IAM permissions** control access
+
+### 🧪 Exam Tips ⭐
+- PHD = **account-specific**, unlike AWS Service Health Dashboard
+- Use **SNS / EventBridge** for automated alerts
+- Ideal for enterprise operational readiness
+
+---
+## AWS Service Health Dashboard (SHD)
+
+### 🧠 What
+- Public dashboard of **AWS service status**
+- Shows **global AWS outages & incidents**
+- Not account-specific
+
+### 🧩 Features
+- Global view of **service availability**
+- Historical uptime & incidents
+- No automated alerts by default
+
+### 🔄 How it Works
+- AWS reports incidents → SHD dashboard
+- Manual monitoring; optional **SNS/EventBridge** via PHD for account alerts
+
+### 🎯 When to Use
+- Check **global AWS service status**
+- Compare regional issues
+- Troubleshoot AWS-wide outages
+
+### 🔐 Security
+- Public → no IAM needed
+
+### 🧪 Exam Tips ⭐
+- SHD = **global**, not personalized
+- PHD = **account-specific**
+- Use PHD + SNS/EventBridge for proactive alerts
+

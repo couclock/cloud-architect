@@ -6,6 +6,7 @@
   - [ECS Service Auto Scaling \& Architectures](#ecs-service-auto-scaling--architectures)
   - [Amazon ECR](#amazon-ecr)
   - [Amazon EKS](#amazon-eks)
+  - [ALB + AWS Load Balancer Controller](#alb--aws-load-balancer-controller)
   - [AWS App Runner](#aws-app-runner)
   - [AWS App2Container (A2C)](#aws-app2container-a2c)
 
@@ -198,6 +199,8 @@
 
 ### Node Management
 - **Managed Node Groups**: AWS creates & manages EC2 nodes, auto-scaling built-in
+  - Cluster Autoscaler – uses AWS Auto Scaling groups.
+  - Karpenter – works directly with the Amazon EC2 Fleet.
 - **Self-Managed Nodes**: you create EC2 instances & register to EKS cluster, manage ASG
 - **Fargate Profiles**: no nodes, fully serverless
 
@@ -221,6 +224,34 @@
 - Use **Fargate** for serverless workloads
 - Storage requires **CSI drivers** for EBS/EFS/FSx
 - IAM roles needed for cluster & node operations
+
+---
+## ALB + AWS Load Balancer Controller
+
+### 🧠 What
+- Kubernetes-managed **ALB**
+- **EKS only**
+- HTTP/HTTPS (Layer 7)
+
+### 🧩 How
+- **Ingress** → watched by controller
+- Controller creates **ALB + target groups**
+- Routing via paths / hosts
+
+### 🔐 Security
+- **IRSA** ⭐
+- **ACM**, **WAF**, Security Groups
+
+### 🆚 Notes
+- ALB = L7
+- NLB = L4
+- Controller ≠ ALB
+
+### 🧪 Exam Tips ⭐
+- Ingress ⇒ ALB
+- Replaces old ALB Ingress Controller
+- Kubernetes-native AWS LB
+
 
 ---
 ## AWS App Runner

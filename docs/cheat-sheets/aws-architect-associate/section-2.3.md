@@ -3,6 +3,7 @@
 - [EC2 Instance Storage](#ec2-instance-storage)
   - [EBS Volumes](#ebs-volumes)
   - [EBS Snapshots](#ebs-snapshots)
+  - [Amazon Data Lifecycle Manager](#amazon-data-lifecycle-manager)
   - [AMIs (Amazon Machine Images)](#amis-amazon-machine-images)
   - [EC2 Instance Store](#ec2-instance-store)
   - [EBS Volumes \& Volume Types](#ebs-volumes--volume-types)
@@ -82,6 +83,39 @@
 - Create Volume from Snapshot → choose **any AZ**  
 - Archive snapshots require waiting before restore  
 - Recycle Bin gives recoverability; rules can be resource-wide
+
+---
+## Amazon Data Lifecycle Manager
+
+### 🧠 What
+- Automates **EBS snapshot lifecycle**
+- Policy-based management
+
+### 🧩 How
+- **Lifecycle policies**
+- Schedule create / retain / delete
+- Tag-based targeting ⭐
+
+### 📦 Resources
+- **EBS volumes**
+- **EBS snapshots**
+- AMI snapshots (via EBS)
+
+### 🔐 Security
+- Uses **IAM roles**
+- Snapshots encrypted if source is
+
+### 🎯 When
+- Backup automation
+- Cost control
+- Compliance retention
+
+### 🧪 Exam Tips ⭐
+- DLM = snapshots only
+- Not for RDS / S3
+- Tag-driven policies
+- Replaces custom Lambda + cron
+
 
 ---
 ## AMIs (Amazon Machine Images)
@@ -170,7 +204,7 @@ Used for **critical, low-latency, high-performance workloads**, including databa
 - **io1**:
   - Size: 4–16 TB
   - Max IOPS: **64,000** on Nitro EC2 / **32,000** otherwise
-  - IOPS can be provisioned independently of size
+  - IOPS can be provisioned independently of size - Up to 50 iops/Gb (if 10Gb => max 500 iops)
 
 - **io2 Block Express**:
   - Size up to **64 TB**

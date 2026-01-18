@@ -8,7 +8,9 @@
   - [IAM Permission Boundaries](#iam-permission-boundaries)
   - [AWS IAM Identity Center (SSO)](#aws-iam-identity-center-sso)
   - [AWS Directory Services \& Microsoft AD](#aws-directory-services--microsoft-ad)
+  - [AWS Service Catalog](#aws-service-catalog)
   - [AWS Control Tower](#aws-control-tower)
+  - [AWS Resource Access Manager (RAM)](#aws-resource-access-manager-ram)
 
 ## AWS Organizations
 
@@ -289,41 +291,138 @@ Two valid models:
 - No AD at all → **Simple AD**
 
 ---
+## AWS Service Catalog
+
+### 🧠 Overview
+- Centralized **catalog of approved AWS resources**
+- Enables **self-service provisioning**
+- Enforces governance & compliance
+
+### 🧩 Core Concepts
+- **Product**: CloudFormation template ⭐
+- **Portfolio**: group of products
+- **Versioning**: multiple product versions
+- **Constraints**: rules applied to products
+
+### 🔐 Access Control
+- **IAM roles & users**
+- Share portfolios **across accounts**
+- Integrates with **AWS Organizations**
+
+### ⚙️ Constraints (Key Types)
+- **Launch constraint** ⭐ (IAM role)
+- **Template constraint**
+- **Tag update constraint**
+- **Notification constraint**
+
+### 🏗️ Common Use Cases
+- Standardized EC2, RDS, VPC provisioning
+- Controlled self-service for dev teams
+- Multi-account governance
+
+### 🆚 Service Catalog vs CloudFormation
+- CFN → free-form templates
+- Service Catalog → **approved, controlled CFN**
+
+### 🎯 When to Use
+- Need **governance + self-service**
+- Large teams / enterprises
+- Reduce misconfigurations
+
+### 🧪 Exam Tips ⭐
+- Service Catalog uses **CloudFormation**
+- Products ≠ resources
+- Launch constraint = execution role
+- Ideal for **standardization**
+
+---
 ## AWS Control Tower
 
-### 🏗️ What It Is
-- Set up & govern **multi-account AWS** easily
-- Built on **AWS Organizations**
-- Opinionated, best-practice landing zone
+### 🧠 Overview
+- **Landing zone** for multi-account AWS
+- Automated **account governance**
+- Built on **AWS Organizations**, **AWS Service Catalog** and **AWS IAM Identity Center**
 
-### ⚙️ Key Benefits
-- Automated account creation
-- Preconfigured security & compliance
-- Central compliance dashboard 📊
-- Auto-detect & auto-remediate issues
+### 🧩 Core Concepts
+- **Landing Zone** ⭐
+- **Accounts**: management, log archive, audit
+- **OUs** (Organizational Units)
+- **Account Factory** (account provisioning)
 
-### 🛡️ Guardrails (Core Concept)
-Apply governance across all accounts
+### 🔐 Guardrails
+- **Preventive** (SCPs) ⭐
+- **Detective** (AWS Config rules)
+- Enforce security & compliance
 
-#### 🚫 Preventive Guardrails
-- **Block actions**
-- Implemented via **SCPs**
-- Example: restrict allowed AWS regions
+### 📜 Logging & Audit
+- Centralized logs
+- **CloudTrail**
+- **AWS Config**
+- Stored in log archive account
 
-#### 🔍 Detective Guardrails
-- **Detect non-compliance**
-- Implemented via **AWS Config**
-- Example: find untagged resources
-- Alerts via **SNS**
-- Optional auto-fix via **Lambda**
+### 🏗️ Common Use Cases
+- Secure multi-account setup
+- Enterprise governance
+- Rapid account creation
 
-### 🔗 Service Mapping (Exam Gold)
-- Control Tower → Organizations
-- Preventive → SCP
-- Detective → AWS Config
-- Remediation → SNS + Lambda
+### 🆚 Control Tower vs Organizations
+- Orgs → structure only
+- Control Tower → **structure + governance**
 
-### ⭐ Exam Tips
-- “Secure multi-account setup quickly” → **Control Tower**
-- Guardrails = automated governance
-- Prevent = block, Detective = monitor
+### 🎯 When to Use
+- New multi-account environments
+- Strong security baseline
+- Limited manual setup
+
+### 🧪 Exam Tips ⭐
+- Control Tower uses **Organizations + SCPs**
+- Guardrails ≠ IAM policies
+- Account Factory = standardized accounts
+- Best for **enterprise-scale AWS**
+
+---
+## AWS Resource Access Manager (RAM)
+
+### 🧠 Overview
+- Share AWS resources **across accounts**
+- Avoid duplication
+- Works with **AWS Organizations**
+
+### 🔗 Shareable Resources
+- **VPC subnets** ⭐
+- **Transit Gateway**
+- **Route 53 Resolver rules**
+- **License Manager configs**
+- **Outposts resources**
+- Service-dependent support
+
+### 🧩 Core Concepts
+- **Resource share**
+- **Owner account** vs **consumer account**
+- Same-region only (most cases)
+
+### 🏢 Organizations
+- Org-based sharing = **no acceptance required**
+- External accounts = **invite + accept**
+- Centralized network architectures
+
+### 🔐 Security
+- IAM permissions required
+- No resource ownership transfer
+- Consumer account = limited actions
+
+### 🏗️ Common Use Cases
+- **Shared VPC** ⭐
+- Hub-and-spoke networking
+- Centralized services (DNS, TGW)
+
+### 🆚 RAM vs VPC Peering
+- RAM shares **subnets**
+- Peering connects **VPCs**
+- RAM scales better for orgs
+
+### 🧪 Exam Tips ⭐
+- RAM ≠ cross-region replication
+- RAM ≠ data sharing
+- Use RAM for **multi-account networking**
+- Shared subnets stay in owner account

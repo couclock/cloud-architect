@@ -3,7 +3,7 @@
 - [Decoupling applications: SQS, SNS, Kinesis \& ActiveMQ](#decoupling-applications-sqs-sns-kinesis--activemq)
   - [Integration \& Messaging](#integration--messaging)
   - [Amazon SQS](#amazon-sqs)
-  - [Amazon SQS](#amazon-sqs-1)
+  - [Amazon SQS Advanced](#amazon-sqs-advanced)
   - [Amazon SNS](#amazon-sns)
   - [Kinesis Data Streams](#kinesis-data-streams)
   - [**Amazon Data Firehose (Kinesis Data Firehose)**](#amazon-data-firehose-kinesis-data-firehose)
@@ -109,7 +109,7 @@
 - Scale consumers, not queue
 
 ---
-## Amazon SQS
+## Amazon SQS Advanced
 
 ### ⏳ Visibility Timeout
 

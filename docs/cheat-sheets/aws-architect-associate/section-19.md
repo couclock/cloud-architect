@@ -12,7 +12,7 @@
   - [CloudHSM vs KMS](#cloudhsm-vs-kms)
   - [AWS WAF / Shield / Firewall Manager](#aws-waf--shield--firewall-manager)
   - [AWS DDoS Protection – Solution Architecture](#aws-ddos-protection--solution-architecture)
-  - [AWS Threat Detection \& Vulnerability Services (Exam-Compact)](#aws-threat-detection--vulnerability-services-exam-compact)
+  - [AWS Threat Detection \& Vulnerability Services](#aws-threat-detection--vulnerability-services)
 
 ## Encryption Overview
 
@@ -429,7 +429,7 @@ Steps to launch EC2 in Account B from encrypted AMI in Account A:
 - Hide backend = reduce attack surface
 
 ---
-## AWS Threat Detection & Vulnerability Services (Exam-Compact)
+## AWS Threat Detection & Vulnerability Services
 
 ### 🕵️ Amazon GuardDuty
 - Intelligent **threat detection**

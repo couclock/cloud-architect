@@ -10,9 +10,10 @@
   - [Lambda Integration with RDS \& Aurora](#lambda-integration-with-rds--aurora)
   - [AWS DynamoDB](#aws-dynamodb)
   - [AWS DynamoDB – Advanced Features](#aws-dynamodb--advanced-features)
-  - [API Gateway Cheat Sheet](#api-gateway-cheat-sheet)
-  - [Step Functions Cheat Sheet](#step-functions-cheat-sheet)
+  - [API Gateway](#api-gateway)
+  - [Step Functions](#step-functions)
   - [Amazon Cognito](#amazon-cognito)
+  - [AWS AppSync](#aws-appsync)
 
 ## AWS Lambda
 
@@ -388,7 +389,7 @@ If the exam mentions throttling, cold starts, or shared limits — this topic is
 - Export/Import = no capacity impact
 
 ---
-## API Gateway Cheat Sheet
+## API Gateway
 
 ### What it is
 - Fully serverless API front door 🚪
@@ -450,7 +451,7 @@ If the exam mentions throttling, cold starts, or shared limits — this topic is
 - Stages required to expose API
 
 ---
-## Step Functions Cheat Sheet
+## Step Functions
 
 ### What it is
 - Serverless workflow orchestration 🔁
@@ -531,3 +532,54 @@ If the exam mentions throttling, cold starts, or shared limits — this topic is
 - API Gateway / ALB + Cognito
 - Temporary credentials
 - Row-level DynamoDB security
+
+---
+## AWS AppSync
+
+### 🧠 Overview
+- Managed **GraphQL API**
+- **Serverless**, scalable
+- Mobile / SPA / real-time apps
+
+### 🧩 Core
+- **Schema required**
+- **Query / Mutation / Subscription**
+- **Resolvers** map API → backend
+
+### 🗄️ Data Sources
+- **DynamoDB** ⭐
+- **Lambda**
+- **RDS / Aurora**
+- **OpenSearch**
+- **HTTP**
+- ❌ Not a database
+
+### 🔐 Auth
+- **Cognito** ⭐
+- **IAM**
+- **API Key** (dev)
+- **OIDC**
+- ✅ Multi-auth supported
+
+### ⚡ Real-Time
+- **Subscriptions** (WebSocket)
+- Triggered by mutations
+
+### 📱 Offline
+- With **Amplify**
+- Sync + conflict resolution
+- ⚠️ Low SAA focus
+
+### 🆚 vs API Gateway
+- AppSync → **GraphQL / real-time**
+- API GW → **REST / HTTP**
+
+### 🏗️ Typical Stack
+- AppSync + DynamoDB + Cognito
+- AppSync + Lambda
+
+### 🧪 Exam Tips ⭐
+- Real-time serverless API → AppSync
+- GraphQL always needs schema
+- REST-only → API Gateway
+- Streaming → Kinesis

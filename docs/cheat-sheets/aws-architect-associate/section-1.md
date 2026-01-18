@@ -181,3 +181,37 @@
 | Temporary access? | STS, AssumeRole |
 
 ---
+
+### IAM Certificate Store
+
+#### 🧠 What
+- Stores **SSL/TLS certificates** in **IAM**
+- Called **IAM Server Certificates**
+- Legacy solution
+
+#### 🔐 Usage
+- Used by:
+  - **Classic Load Balancer**
+  - **API Gateway (old/edge cases)**
+- ❌ Not supported by ALB / NLB
+
+#### 📦 Characteristics
+- Certificates **manually uploaded**
+- You manage:
+  - Private keys
+  - Renewal
+- Region-specific
+
+#### 🆚 IAM Cert Store vs ACM
+- **IAM** → legacy, manual
+- **ACM** ⭐ → managed, auto-renew
+- ALB / CloudFront → **ACM only**
+
+#### 🎯 When to Use
+- Legacy workloads
+- Classic Load Balancer only
+
+#### 🧪 Exam Tips ⭐
+- Prefer **ACM** by default
+- IAM cert store = **not recommended**
+- ALB + HTTPS → ACM required

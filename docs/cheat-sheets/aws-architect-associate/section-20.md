@@ -4,7 +4,7 @@
 - [Networking - VPC](#networking---vpc)
   - [CIDR \& IPv4](#cidr--ipv4)
   - [Default VPC \& Custom VPC](#default-vpc--custom-vpc)
-  - [VPC Subnets (SAA Ultra-Compact)](#vpc-subnets-saa-ultra-compact)
+  - [VPC Subnets](#vpc-subnets)
   - [Internet Access \& Public Subnets](#internet-access--public-subnets)
   - [Bastion Host](#bastion-host)
   - [NAT Instance](#nat-instance)
@@ -14,7 +14,7 @@
   - [VPC Endpoints](#vpc-endpoints)
   - [VPC Flow Logs](#vpc-flow-logs)
   - [Site-to-Site VPN](#site-to-site-vpn)
-  - [AWS Direct Connect (DX) – Compact Cheat Sheet](#aws-direct-connect-dx--compact-cheat-sheet)
+  - [AWS Direct Connect (DX)](#aws-direct-connect-dx)
   - [AWS Transit Gateway \& VPC Traffic Mirroring](#aws-transit-gateway--vpc-traffic-mirroring)
   - [IPv6 in AWS 🌐](#ipv6-in-aws-)
   - [Egress-Only Internet Gateway (EIGW) – IPv6 🔒](#egress-only-internet-gateway-eigw--ipv6-)
@@ -112,7 +112,7 @@
 - Always design your **own VPC** for production
 
 ---
-## VPC Subnets (SAA Ultra-Compact)
+## VPC Subnets
 
 ### Subnet Basics
 - Subnet = CIDR range **inside a VPC**
@@ -574,7 +574,7 @@ A subnet is **public** if ALL are true:
 - VPNs **do not require a direct private line**; use internet + encryption
 
 ---
-## AWS Direct Connect (DX) – Compact Cheat Sheet
+## AWS Direct Connect (DX)
 
 ### What it is 🔗
 - Dedicated **private connection** from on-premises → AWS  

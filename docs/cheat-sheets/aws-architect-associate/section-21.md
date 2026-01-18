@@ -7,10 +7,11 @@
   - [AWS Database Migration Service (DMS)](#aws-database-migration-service-dms)
   - [Migrating to Amazon Aurora (MySQL / PostgreSQL)](#migrating-to-amazon-aurora-mysql--postgresql)
   - [On-Premise ↔ AWS Migration Services](#on-premise--aws-migration-services)
+  - [AWS Application Migration Service - MGN](#aws-application-migration-service---mgn)
   - [AWS Backup](#aws-backup)
   - [AWS Migration Planning \& Rehosting](#aws-migration-planning--rehosting)
   - [Large Data Transfer](#large-data-transfer)
-  - [VMware Cloud on AWS – SAA Ultra-Compact](#vmware-cloud-on-aws--saa-ultra-compact)
+  - [VMware Cloud on AWS](#vmware-cloud-on-aws)
 
 ## Disaster Recovery (DR)
 
@@ -256,6 +257,37 @@ See this [white paper](https://docs.aws.amazon.com/whitepapers/latest/disaster-r
 - VM Import/Export = VM-level move
 
 ---
+## AWS Application Migration Service - MGN
+
+### 🧠 What
+- Lift-and-shift **server migration**
+- **Replaces SMS**
+- **Replication Agent** on source servers ⭐
+
+### 🔄 How
+- Continuous **block-level replication**
+- Source → staging → EC2
+- Test launch → cutover
+
+### 📦 Sources & Target
+- On-prem, other clouds, physical/virtual
+- Destination = **EC2**
+
+### 🔐 Security
+- Encrypted replication
+- IAM-controlled
+
+### 🆚 Compare
+- **MGN** → servers/apps
+- **DMS** → databases only
+
+### 🧪 Exam Tips ⭐
+- Agent required
+- Near-zero downtime
+- Large-scale migrations
+
+
+---
 ## AWS Backup
 
 ### What It Is
@@ -358,7 +390,7 @@ See this [white paper](https://docs.aws.amazon.com/whitepapers/latest/disaster-r
 - Direct Connect → faster, long setup
 
 ---
-## VMware Cloud on AWS – SAA Ultra-Compact
+## VMware Cloud on AWS
 
 ### What It Is
 - Extend on-prem VMware to AWS

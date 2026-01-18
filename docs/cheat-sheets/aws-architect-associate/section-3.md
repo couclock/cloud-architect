@@ -380,6 +380,25 @@
   - Always pair with ELB for traffic distribution & health checks  
   - Min/Max/Desired + scaling policies = core ASG logic  
 
+### Default Termination Policy
+
+- Goal: **keep AZs balanced**
+- Ignore instances **protected from scale-in**
+
+- Selection Order
+1. **Availability Zone**
+   - Pick AZ with **most instances**
+   - Tie-breaker: AZ using **oldest launch template**
+
+2. **Instance Age**
+   - Choose instance using **oldest launch template**
+
+3. **Billing Optimization**
+   - Pick instance **closest to next billing hour**
+
+4. **Final Tie-breaker**
+   - **Random** selection
+
 ---
 ## Auto Scaling Policies
 
