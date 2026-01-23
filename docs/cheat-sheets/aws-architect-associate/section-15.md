@@ -182,6 +182,27 @@
 - Big data tools without setup → **EMR**
 - Spot for compute-only → **Task nodes**
 
+### Security Layers Comparison: IAM vs Ranger vs Lake Formation
+
+#### IAM
+- Bucket/object-level access
+- Does NOT understand tables or columns
+- Always used with EMR
+
+#### Apache Ranger
+- Fine-grained access inside EMR
+- Table- and column-level permissions
+- Requires operational overhead
+- Rarely the best SAA answer
+
+#### AWS Lake Formation (Preferred)
+- AWS-managed
+- Fine-grained data lake security
+- Integrates with EMR, Athena, Redshift
+- Minimal operational overhead
+
+📌 If Lake Formation is an option → **choose it**
+
 ---
 ## Amazon QuickSight
 
