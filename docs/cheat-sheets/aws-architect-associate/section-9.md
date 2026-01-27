@@ -80,6 +80,7 @@
 - Auto grow/shrink, snapshots, replication  
 - **Compression \+ deduplication**  
 - **Instant cloning** for testing
+- **SnapMirror** to replicate data from a source FSx for ONTAP to a destination FSx for ONTAP.
 
 ### 🧱 FSx for OpenZFS
 

@@ -2,6 +2,7 @@
 
 - [AWS Fundamentals \& IAM](#aws-fundamentals--iam)
   - [Regions, AZs and Edge locations](#regions-azs-and-edge-locations)
+  - [AWS Local Zones](#aws-local-zones)
   - [🔐 IAM – Identity \& Access Management](#-iam--identity--access-management)
 
 
@@ -23,6 +24,44 @@
 - **Regional:** EC2, Elastic Beanstalk, Lambda, Rekognition  
 - Check region table for service availability  
 
+---
+## AWS Local Zones
+
+### 🧠 What
+- **Extension of AWS Region**
+- Brings **compute, storage, networking** closer to end users
+- Reduce **latency** for specific workloads ⭐
+
+### 🌍 Key Features
+- Same AWS services as parent region (compute, EBS, VPC)
+- **Single AZ-like deployment**
+- Connected via **AWS backbone network**
+
+### 🎯 Use Cases
+- Low-latency apps (media, gaming, AR/VR)
+- Real-time data processing
+- Edge computing for cities or metro areas
+
+### 🏗️ Architecture Notes
+- Local Zone = subset of region services
+- Managed like an **Availability Zone**
+- Linked to a parent region for control plane
+
+### 🔐 Security
+- Integrated with **VPC**, IAM, Security Groups
+- Same compliance standards as parent region
+
+### 📊 Billing
+- Services billed **like parent region**
+- Data transfer may have extra costs
+
+### 🧪 Exam Tips ⭐
+- Local Zones reduce **latency**, not replace regions
+- Good for **end-user proximity**
+- Linked to parent region → control plane is regional
+- Only certain services available
+
+---
 ## 🔐 IAM – Identity & Access Management
 
 ### 📌 Key Concepts

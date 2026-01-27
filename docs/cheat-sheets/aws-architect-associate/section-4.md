@@ -275,7 +275,7 @@
   - Based on CPU / connections
   - Min: 1, Max: 15 replicas
 - **Aurora Serverless v2**
-  - Uses **ACUs (Aurora Capacity Units)**
+  - Uses **ACUs (Aurora Capacity Units)** (2GB mem per ACU)
   - Scales between min/max ACU automatically
 
 ### Backup & Recovery
