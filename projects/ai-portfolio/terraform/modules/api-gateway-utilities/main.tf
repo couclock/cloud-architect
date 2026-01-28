@@ -10,7 +10,7 @@ resource "aws_apigatewayv2_api" "utilities_api" {
   cors_configuration {
     allow_origins = [
       "http://localhost:3000",
-      "https://ton-frontend.com"
+      "http://ai-portfolio.${var.my_domain}"
     ]
 
     allow_methods = [
