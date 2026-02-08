@@ -3,7 +3,6 @@
 
 ## 📚 Table of Contents
 
-- [🎯 Goal](#-goal)
 - Section 1 – [AWS Fundamentals & IAM](section-1.md)
    - [Regions, AZs and Edge locations](section-1.md#regions-azs-and-edge-locations)
    - [IAM – Identity & Access Management](section-1.md#-iam--identity--access-management)
