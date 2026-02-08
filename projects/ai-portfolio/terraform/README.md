@@ -26,4 +26,4 @@ cd stacks/frontend
 terraform init
 terraform apply
 ```
-- Your AI portfolio genrator is now available under ai-portfolio.my-amazing-domain.com !
+- Your AI portfolio generator is now available on ai-portfolio.my-amazing-domain.com !
