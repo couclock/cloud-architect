@@ -116,7 +116,6 @@
 - Tag-driven policies
 - Replaces custom Lambda + cron
 
-
 ---
 ## AMIs (Amazon Machine Images)
 
@@ -181,8 +180,6 @@
 ---
 ## EBS Volumes & Volume Types
 
-So, now, let's talk about EBS volumes and their different volume types. They come in six different types today, and we can group them in several categories.
-
 ### General Purpose SSD (gp2, gp3)
 These balance price and performance for a wide variety of workloads.
 
@@ -235,7 +232,6 @@ You do **not** need to memorize all numbers for the exam; just understand when t
 If you need **more than 32,000 IOPS**, you must use **EC2 Nitro + io1/io2**.
 
 ---
-
 ## Multi-Attach Feature
 
 The **Multi-Attach** feature allows the **same EBS volume** to be attached to **multiple EC2 instances** *in the same Availability Zone*.
@@ -251,7 +247,6 @@ The **Multi-Attach** feature allows the **same EBS volume** to be attached to **
 - Cannot attach across different AZs.
 
 ---
-
 ## EBS Encryption
 
 🔐 **Basics**
