@@ -11,7 +11,7 @@
   - [Amazon ElastiCache](#amazon-elasticache)
   - [Common Network \& Database Ports](#common-network--database-ports)
 
-
+---
 ## AWS RDS Overview
 - 🗄️ RDS = managed **relational (SQL)** database service
 - 📊 Query language: **SQL**
@@ -49,7 +49,6 @@
 - 🔁 No downtime/manual ops
 - 🎯 Best for **unpredictable workloads**
 - ✅ Supported by **all RDS engines**
-
 
 ---
 ## RDS Read Replicas vs Multi-AZ
@@ -101,7 +100,6 @@
   - Snapshot taken
   - Standby restored
   - Sync established
-
 
 ---
 ## Creating & Using an Amazon RDS Instance
@@ -354,7 +352,6 @@
 - Serverless = unpredictable workloads
 - Babelfish = SQL Server compatibility, not MySQL
 
-
 ---
 ## RDS & Aurora: Backups, Security, Proxy
 
@@ -395,7 +392,6 @@
 - Ideal for **staging from prod**
 
 ---
-
 ### 🔐 RDS & Aurora Security
 
 #### 🔒 Encryption at Rest
@@ -422,7 +418,6 @@
 - Export to **CloudWatch Logs** for retention
 
 ---
-
 ### 🔌 Amazon RDS Proxy
 
 ### 🎯 Purpose
@@ -452,16 +447,14 @@
 - Aurora backups **cannot be disabled**
 - Cloning = fastest way to copy Aurora DB
 
-
-  ---
-  ## Amazon ElastiCache
+---
+## Amazon ElastiCache
 
 ### Overview
 - Managed **in-memory cache** (Redis / Memcached)
 - Sub-millisecond latency
 - Reduces **RDS read load**
 - Helps build **stateless applications**
-
 
 ### Engines
 - **Redis / Valkey (recommended)**
@@ -475,7 +468,6 @@
 - No HA (node failure = data loss)
 - Multi-threaded
 
-
 ### Common Architectures
 - **Cache-aside (read-through)**
 - Cache hit → return data
@@ -483,7 +475,6 @@
 - **Session Store**
 - Store user sessions in cache
 - Enables stateless apps
-
 
 ### Deployment
 - **Serverless** or **Node-based cluster**
@@ -493,19 +484,16 @@
 - Runs in **VPC** (subnet groups)
 - Supports **Outposts**
 
-
 ### Security ⭐
 - **IAM auth**: Redis only (API-level)
 - **Redis AUTH**: password / auth token
 - **SSL in-transit encryption**
 - **Memcached**: SASL authentication
 
-
 ### Cache Loading Patterns ⭐
 - **Lazy Loading**: read → cache on miss (stale possible)
 - **Write Through**: write DB + cache (no stale)
 - **Session Store**: TTL-based expiration
-
 
 ### Redis Special Use Case ⭐
 - **Gaming Leaderboards**
@@ -513,19 +501,13 @@
 - Real-time ranking
 - Uniqueness + ordering
 
-
 ### Exam Tips ⭐
 - Redis = HA, durability, advanced features
 - Memcached = simple, fast, no HA
 - Sorted Sets = leaderboard questions
 - Cache invalidation = hardest problem
 
-
 ---
-
-## Common Network & Database Ports
-
-
 ## Common Network & Database Ports
 
 ```md
