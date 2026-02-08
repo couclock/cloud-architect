@@ -15,7 +15,7 @@
   - [Domain Registrar vs DNS Service](#domain-registrar-vs-dns-service)
   - [Route 53 Resolver (Hybrid DNS)](#route-53-resolver-hybrid-dns)
 
-
+---
 ## DNS Overview
 
 • 🌐 DNS = Domain Name System → translates hostnames → IPs  
@@ -185,7 +185,6 @@
 • Simple routing = single record response  
 • TTL caching explains why DNS changes are delayed
 
-
 ---
 ## CNAME vs Alias
 
@@ -266,7 +265,6 @@
 - Latency-based = geo-aware, multi-region, low-latency routing
 
 ---
-
 ## Route 53 Health Checks
 
 - 🎯 Purpose: monitor endpoint health + enable DNS failover
@@ -310,7 +308,6 @@ Exam Tips 📝:
 - Health checks ≠ ELB target health checks
 
 ---
-
 ## Routing Policies: Failover & Geolocation
 
 ### Failover Routing Policy 🔁
