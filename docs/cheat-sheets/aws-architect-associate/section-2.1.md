@@ -59,6 +59,7 @@
 - Public IP volatility → use **Elastic IP** if persistence needed  
 - Getting EC2 metadata: `curl http://169.254.169.254/latest/meta-data/`
 
+---
 ## EC2 Instance Types
 
 **EC2 Instance Types**
@@ -83,6 +84,7 @@
 - Larger sizes = more vCPU + RAM  
 - Use AWS docs or **[instances.vantage.sh](https://instances.vantage.sh/)** to compare specs & pricing  
 
+---
 ## EC2 Security Groups (Firewall Rules)
 
 - 🔒 **Instance-level firewall** (inbound + outbound)
@@ -124,6 +126,7 @@
 - ⏳ **Timeout** = missing inbound rule  
 - Add correct port (e.g., 22, 80, 443) → connection restored
 
+---
 ## EC2 Instance Connect (Browser-Based SSH)
 
 ### Overview
@@ -161,6 +164,7 @@
   - Add IPv4 + IPv6 entries if needed  
 - ✔ After fixing SG rules → reconnect via the console
 
+---
 ## Using IAM Roles with EC2 Instances
 
 ### Core Idea
@@ -234,6 +238,7 @@
 - 🏢 **Compliance/BYOL** → Dedicated Host  
 - 📍 **Guaranteed AZ capacity** → Capacity Reservation
 
+---
 ## EC2 Spot Instances & Spot Fleets
 
 ### Spot Instances
@@ -273,6 +278,7 @@
 - Know **max price**, **grace period**, **request types**
 - Spot fleets → best for **multi-AZ, cost-optimized workloads**
 
+---
 ## EC2 Launch Methods & Options
 
 ### Spot Instances & Spot Fleets
