@@ -15,7 +15,8 @@ resource "aws_apigatewayv2_api" "utilities_api" {
 
     allow_methods = [
       "GET",
-      "OPTIONS"
+      "OPTIONS",
+      "POST"
     ]
 
     allow_headers = [
@@ -47,6 +48,12 @@ resource "aws_apigatewayv2_integration" "yfinance_search_lambda_integration" {
   integration_uri        = var.yfinance_search_lambda_arn
   payload_format_version = "2.0"
 }
+resource "aws_apigatewayv2_integration" "bedrock_lambda_integration" {
+  api_id                 = aws_apigatewayv2_api.utilities_api.id
+  integration_type       = "AWS_PROXY"
+  integration_uri        = var.bedrock_lambda_arn
+  payload_format_version = "2.0"
+}
 # Route GET /yfinance/{ticker}/{action}
 resource "aws_apigatewayv2_route" "yfinance_get_route" {
   api_id    = aws_apigatewayv2_api.utilities_api.id
@@ -58,6 +65,12 @@ resource "aws_apigatewayv2_route" "yfinance_search_route" {
   api_id    = aws_apigatewayv2_api.utilities_api.id
   route_key = "GET /yfinance/search"
   target    = "integrations/${aws_apigatewayv2_integration.yfinance_search_lambda_integration.id}"
+}
+# Route POST /bedrock
+resource "aws_apigatewayv2_route" "bedrock_route" {
+  api_id    = aws_apigatewayv2_api.utilities_api.id
+  route_key = "POST /bedrock"
+  target    = "integrations/${aws_apigatewayv2_integration.bedrock_lambda_integration.id}"
 }
 
 # Stage prod
@@ -121,6 +134,13 @@ resource "aws_lambda_permission" "yfinance_search_allow_apigw" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
   function_name = var.yfinance_search_lambda_arn
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_apigatewayv2_api.utilities_api.execution_arn}/*/*"
+}
+resource "aws_lambda_permission" "bedrock_allow_apigw" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = var.bedrock_lambda_arn
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_apigatewayv2_api.utilities_api.execution_arn}/*/*"
 }

@@ -1,16 +1,5 @@
 # AWS Certified Solutions Architect – Associate (SAA-C03)
-## Study Notes – Udemy Course
 
-| Field | Value |
-|------|------|
-| Course | AWS Certified Solutions Architect – Associate (SAA-C03) |
-| Source | Udemy |
-| Objective | Pass the AWS SAA-C03 exam |
-| Start Date | 2025-12-01 |
-| Target Exam Date | 2025-12-30 |
-| Status | In progress |
-
----
 
 ## 📚 Table of Contents
 
@@ -48,12 +37,3 @@
 - Section 23 - [Other services](section-23.md)
 - Section 24 - [White papers and architectures](section-24.md)
 
-## Prompt to use
-
-Please summarize the following transcript into a very compact AWS Solutions Architect Associate (SAA) revision cheat sheet using markdown format in a code block. 
-- Include a second-level Markdown title as the cheat sheet title (##). 
-- In your markdown: no separators. 
-- Use 3rd level titles (###), short bullet points, minimal wording, and highlight only SAA-relevant concepts, AWS services, rules, exam tips, and best practices. 
-- Use simple icons when relevant, but keep them limited. 
-- Keep the cheat sheet extremely concise and easy to memorize. 
-Here’s the transcript:

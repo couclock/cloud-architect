@@ -7,17 +7,19 @@ export function useSecurity () {
   const loading = ref(false)
   const error = ref<string | null>(null)
 
-  async function getInfo (ticker: string) {
+  async function getInfo (ticker: string): Promise<SecurityInfo> {
     loading.value = true
     error.value = null
+    let secInfo: SecurityInfo = {} as SecurityInfo
     try {
       const wrapper = await securityApi.getInfo(ticker)
-      info.value = wrapper.data
+      secInfo = wrapper.data
     } catch (error_: any) {
       error.value = error_?.message ?? 'Unknown error'
     } finally {
       loading.value = false
     }
+    return secInfo
   }
 
   async function search (query: string): Promise<SecuritySearchResult[]> {
@@ -34,5 +36,5 @@ export function useSecurity () {
     return results
   }
 
-  return { info, loading, error, getInfo, search }
+  return { loading, error, getInfo, search }
 }

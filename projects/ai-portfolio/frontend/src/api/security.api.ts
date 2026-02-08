@@ -1,6 +1,8 @@
-import { http2 } from './http'
+import { http_security } from './http'
 
 export interface SecurityInfo {
+  shortName: string
+  longName: string
   website: any
   address1: any
   city: any
@@ -62,9 +64,9 @@ export interface SecuritySearchResult {
 
 export const securityApi = {
   getInfo (ticker: string) {
-    return http2<SecurityInfoWrapper>('/' + ticker + '/info')
+    return http_security<SecurityInfoWrapper>('/' + ticker + '/info')
   },
   search (query: string) {
-    return http2<SecuritySearchResult[]>('/search?query=' + query)
+    return http_security<SecuritySearchResult[]>('/search?query=' + query)
   },
 }

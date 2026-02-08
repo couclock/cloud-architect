@@ -11,3 +11,7 @@ variable "yfinance_search_lambda_arn" {
   description = "yFinance search lambda arn"
   type        = string
 }
+variable "bedrock_lambda_arn" {
+  description = "Bedrock lambda arn"
+  type        = string
+}

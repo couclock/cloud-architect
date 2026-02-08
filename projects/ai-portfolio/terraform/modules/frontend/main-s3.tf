@@ -6,11 +6,44 @@
 # aws s3 sync ./dist s3://ai-portfolio.danylecoq.net
 
 # ############################################
+# Build frontend
+# ############################################
+resource "null_resource" "build_frontend" {
+  provisioner "local-exec" {
+    command = "cd ${path.module}/../../../frontend && yarn build"
+  }
+
+  triggers = {
+    frontend_version = filemd5("${path.module}/../../../frontend/package.json")
+  }
+}
+
+# ############################################
+# Upload frontend to S3
+# ############################################
+resource "null_resource" "upload_frontend" {
+  provisioner "local-exec" {
+    command = "aws s3 sync ${path.module}/../../../frontend/dist s3://${aws_s3_bucket.frontend.id} --delete"
+  }
+
+  depends_on = [
+    aws_s3_bucket.frontend,
+    aws_s3_bucket_website_configuration.frontend,
+    null_resource.build_frontend
+  ]
+
+  triggers = {
+    frontend_version = filemd5("${path.module}/../../../frontend/package.json")
+  }
+}
+
+# ############################################
 # S3 subcket
 # ############################################
 
 resource "aws_s3_bucket" "frontend" {
-  bucket = "ai-portfolio.${var.my_domain}"
+  bucket        = "ai-portfolio.${var.my_domain}"
+  force_destroy = true
 }
 
 resource "aws_s3_bucket_ownership_controls" "frontend" {
@@ -62,4 +95,7 @@ resource "aws_s3_bucket_policy" "frontend" {
       }
     ]
   })
+  depends_on = [
+    aws_s3_bucket_public_access_block.frontend
+  ]
 }

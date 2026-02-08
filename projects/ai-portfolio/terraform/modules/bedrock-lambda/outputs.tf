@@ -1,0 +1,4 @@
+
+output "bedrock_lambda_arn" {
+  value = aws_lambda_function.bedrock_lambda.arn
+}
