@@ -1,10 +1,3 @@
-
-# ############################################
-# Pour envoyer le site sur S3
-# A faire apres la creation du bucket
-# ############################################
-# aws s3 sync ./dist s3://ai-portfolio.danylecoq.net
-
 # ############################################
 # Build frontend
 # ############################################

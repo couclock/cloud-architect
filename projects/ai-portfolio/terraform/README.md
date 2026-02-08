@@ -16,3 +16,13 @@ cd stacks/api-gateway-utilities
 terraform init
 terraform apply
 ```
+- Add a file terraform.tfvars in stacks/frontend containing your own AWS-managed domain
+```
+my_domain   = "my-amazing-domain.com"
+```
+- Create frontend artefact and upload it on S3, create related DNS entry
+```
+cd stacks/frontend
+terraform init
+terraform apply
+```

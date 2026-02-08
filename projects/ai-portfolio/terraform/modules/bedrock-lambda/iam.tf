@@ -48,10 +48,6 @@ resource "aws_iam_policy" "bedrock_invoke" {
         Effect = "Allow"
         Action = ["bedrock:InvokeModel"]
         Resource = [
-          "arn:aws:bedrock:eu-west-1::foundation-model/openai.gpt-oss-safeguard-20b",
-          "arn:aws:bedrock:eu-west-1::foundation-model/openai.gpt-oss-20b-1:0",
-          "arn:aws:bedrock:eu-west-1::foundation-model/openai.gpt-oss-120b-1:0",
-          "arn:aws:bedrock:eu-west-1::foundation-model/openai.gpt-oss-safeguard-120b",
           "arn:aws:bedrock:eu-west-1::foundation-model/nvidia.nemotron-nano-9b-v2"
         ]
       }
