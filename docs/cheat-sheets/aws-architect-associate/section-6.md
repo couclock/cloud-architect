@@ -6,8 +6,9 @@
   - [Scalable WordPress on AWS (Stateful App)](#scalable-wordpress-on-aws-stateful-app)
   - [Fast Application Instantiation](#fast-application-instantiation)
   - [AWS Elastic Beanstalk Overview](#aws-elastic-beanstalk-overview)
+  - [AWS Proton](#aws-proton)
 
-
+---
 ## whatsthetime.com - EC2 → ELB → ASG → Multi-AZ Architecture Evolution
 
 ### Phase 1: Single EC2 (PoC) 🧪
@@ -262,7 +263,7 @@
 - Custom infra → CloudFormation
 
 ---
-## AWS Proton — SAA-C03 Ultra-Compact Cheat Sheet
+## AWS Proton
 
 ### What It Is 🧩
 - Managed **app infrastructure orchestration**
