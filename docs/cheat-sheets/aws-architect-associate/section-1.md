@@ -4,6 +4,7 @@
   - [Regions, AZs and Edge locations](#regions-azs-and-edge-locations)
   - [AWS Local Zones](#aws-local-zones)
   - [🔐 IAM – Identity \& Access Management](#-iam--identity--access-management)
+  - [IAM Certificate Store](#iam-certificate-store)
 
 
 ## Regions, AZs and Edge locations
@@ -209,8 +210,6 @@
 - Temporary creds via STS
 - Password policy: length, characters, rotation, allow update by users on their own, prevent re use
 
----
-
 ### ❓Common Exam Questions
 
 | Question topic | Answer |
@@ -220,8 +219,7 @@
 | Temporary access? | STS, AssumeRole |
 
 ---
-
-### IAM Certificate Store
+## IAM Certificate Store
 
 #### 🧠 What
 - Stores **SSL/TLS certificates** in **IAM**
