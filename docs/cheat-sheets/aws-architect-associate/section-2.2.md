@@ -39,6 +39,7 @@
 - IGW = public subnet → Internet.
 - EIPs generally = bad architecture → use DNS/ALB.
 
+---
 ## EC2 Placement Groups
 
 ### 🧩 Types
@@ -73,6 +74,7 @@
 - Can't change PG type after creation  
 - Enhanced networking boosts Cluster PG performance
 
+---
 ## Elastic Network Interfaces (ENI)
 
 ### Essentials
@@ -107,6 +109,7 @@
 - Manually created ENIs persist → good for IP continuity.
 - ENI provides network access but is **not** for cross-AZ moves.
 
+---
 ## EC2 Hibernate
 
 ### Concept
