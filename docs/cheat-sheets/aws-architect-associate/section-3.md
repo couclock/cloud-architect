@@ -12,6 +12,7 @@
   - [Auto Scaling Group (ASG)](#auto-scaling-group-asg)
   - [Auto Scaling Policies](#auto-scaling-policies)
 
+---
 ## Scalability & High Availability
 
 ### 🔼 Vertical Scaling (Scale Up/Down)
@@ -258,7 +259,6 @@
 
 ![From Udemy course - Ultimate AWS Certified Solutions Architect Associate](images/cross-zone-load-balancing.png)
 
-
 - ⚙️ **Defaults & Charges**
   - **ALB**: XZLB **ON by default**  
     - Can override per **Target Group** (force ON/OFF)  
@@ -324,11 +324,8 @@
   - SNI = hostname-based cert selection
   - Prefer **ACM** over IAM/import
 
-
 ---
-
 ## ELB Connection Draining - Deregistration Delay
-
 
 - 🔄 Purpose: allow in-flight requests to finish before instance removal
 - Names:
