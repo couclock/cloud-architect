@@ -455,8 +455,6 @@ Steps to launch EC2 in Account B from encrypted AMI in Account A:
 - Automations via Lambda / SNS
 - Detects **crypto-mining attacks** (exam favorite)
 
----
-
 ### 🔍 Amazon Inspector
 - **Automated vulnerability scanning**
 
@@ -476,8 +474,6 @@ Steps to launch EC2 in Account B from encrypted AMI in Account A:
 - Findings → Security Hub
 - Events → EventBridge
 
----
-
 ### 🧠 Amazon Macie
 - **Sensitive data discovery** (PII)
 - S3-only
@@ -488,8 +484,6 @@ Steps to launch EC2 in Account B from encrypted AMI in Account A:
 - Scans S3 buckets
 - Identifies PII
 - Findings → EventBridge → SNS / Lambda
-
----
 
 ### 🧠 Exam Mindset
 - Threat detection → **GuardDuty**
