@@ -9,6 +9,7 @@
   - [Storage Classes](#storage-classes)
   - [S3 Express One Zone](#s3-express-one-zone)
 
+---
 ## Amazon S3 Overview
 
 ### What It Is
