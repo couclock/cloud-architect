@@ -9,4 +9,5 @@
 - Section 4 – [Operational excellence pillar](section4-operational-excellence.md)
 - Section 5 – [Security pillar](section5-security.md)
 - Section 6 – [Reliability pillar](section6-reliability.md)
+- Section 7 – [Performance pillar](section7-performance.md)
 
