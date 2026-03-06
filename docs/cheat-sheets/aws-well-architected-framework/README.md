@@ -10,4 +10,6 @@
 - Section 5 – [Security pillar](section5-security.md)
 - Section 6 – [Reliability pillar](section6-reliability.md)
 - Section 7 – [Performance pillar](section7-performance.md)
+- Section 8 – [Cost optimization pillar](section8-cost.md)
+- Section 9 – [Sustainability pillar](section9-sustainability.md)
 

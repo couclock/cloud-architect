@@ -14,21 +14,6 @@ In this module, you learn:
 
 ---
 
-# 2️⃣ Security Pillar Overview
-
-The AWS Well-Architected Framework has **6 pillars**:
-
-1. Operational Excellence  
-2. Security  
-3. Reliability  
-4. Performance Efficiency  
-5. Cost Optimization  
-6. Sustainability  
-
-This module focuses on **Security**.
-
----
-
 # 3️⃣ What Is the Security Pillar?
 
 The **Security Pillar** focuses on:

@@ -15,21 +15,6 @@ In this module, you will learn:
 
 ---
 
-# 2️⃣ Performance Efficiency Pillar Overview
-
-The AWS Well-Architected Framework has **6 pillars**:
-
-1. Operational Excellence  
-2. Security  
-3. Reliability  
-4. Performance Efficiency  
-5. Cost Optimization  
-6. Sustainability  
-
-This module focuses on **Performance Efficiency**.
-
----
-
 # 3️⃣ What Is the Performance Efficiency Pillar?
 
 The **Performance Efficiency Pillar** focuses on:
