@@ -79,3 +79,4 @@ Thumbs.db
 *.key
 *.crt
 logs/
+docs/cheat-sheets/aws-architect-professional/scripts/
