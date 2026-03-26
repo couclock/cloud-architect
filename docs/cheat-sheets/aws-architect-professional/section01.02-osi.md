@@ -1,5 +1,12 @@
 # OSI Netwwork model
 
+## Table of Contents
+
+- [OSI Layer 1 (Physical Layer)](#osi-layer-1-physical-layer)
+- [OSI Layer 2 (Data Link)](#osi-layer-2-data-link)
+- [OSI Layer 3 (Network Layer)](#osi-layer-3-network-layer)
+- [OSI Layer 4 (Transport) + L5 (Session)](#osi-layer-4-transport-l5-session)
+
 ## OSI Layer 1 (Physical Layer)
 
 ### 🔌 Core Concept
