@@ -9,3 +9,4 @@
   - [Other networking stuff](section01.03-network.md)
   - [Security](section01.04-security.md)
   - [DNS & DNSSEC](section01.05-dns.md)
+  - [Misc](section01.06-misc.md)
